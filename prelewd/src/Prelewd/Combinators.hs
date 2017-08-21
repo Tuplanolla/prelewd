@@ -3,6 +3,6 @@
 -- | Combinators.
 module Prelewd.Combinators where
 
--- | Choose one or the other.
-other :: a -> a -> a
-other _ x = x
+-- | Unambiguous choice for when the value does not matter.
+unamb :: a -> a -> a
+unamb _ x = x
