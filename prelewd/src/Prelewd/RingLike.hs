@@ -19,11 +19,11 @@ class (Monoid (Sum a), Semigroup (Product a)) => Ringoid a where
   mul = unliftProduct2 op
 
 -- | > forall x. mul x iden = iden
--- | > forall x y z. mul x (add y z) = add (mul x y) (mul x z)
+-- > forall x y z. mul x (add y z) = add (mul x y) (mul x z)
 class Ringoid a => LeftSeminearring a
 
 -- | > forall x. mul iden x = iden
--- | > forall x y z. mul (add x y) z = add (mul x z) (mul y z)
+-- > forall x y z. mul (add x y) z = add (mul x z) (mul y z)
 class Ringoid a => RightSeminearring a
 
 -- | This class is also known as `Nearsemiring`.
