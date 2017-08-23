@@ -1,7 +1,9 @@
+{-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
 -- | Group-like structures.
-module Prelewd.GroupLike where
+module Prelewd.GroupLike (
+  module Prelewd.GroupLike) where
 
 import Prelewd.Combinators
 
@@ -9,42 +11,48 @@ import Prelewd.Combinators
 class Magma a where
   op :: a -> a -> a
 
--- | Also known as `Associative`.
+-- | > forall x y z. op (op x y) z = op x (op y z)
 --
--- > forall x y z. op (op x y) z = op x (op y z)
-class Magma a => Semigroup a where
+-- This class is also known as `Associative`.
+class Magma a => Semigroup a
 
--- | Also known as `Symmetric`.
+-- | > forall x y. op x y = op y x
 --
--- > forall x y. op x y = op y x
-class Magma a => Abelian a where
+-- This class is also known as `Symmetric` or `Commutative`.
+class Magma a => Abelian a
 
 -- | > exists idenl. forall x. op idenl x = x
-class Magma a => LeftIdentity a where
+class Magma a => LeftUnital a where
   idenl :: a
 
 -- | > exists idenr. forall x. op x idenr = x
-class Magma a => RightIdentity a where
+class Magma a => RightUnital a where
   idenr :: a
 
--- | > exists invl. forall x. op (invl x) x = idenl
-class LeftIdentity a => LeftInverse a where
-  invl :: a -> a
-
--- | > exists invr. forall x. op x (invr x) = idenr
-class RightIdentity a => RightInverse a where
-  invr :: a -> a
-
 -- | > exists iden. idenl = iden = idenr
-class (Semigroup a, LeftIdentity a, RightIdentity a) => Monoid a where
+--
+-- This class is also known as `Identified` or `Pointed`.
+class (LeftUnital a, RightUnital a) => Unital a where
   iden :: a
   iden = unamb idenl idenr
 
-class (Monoid a, Abelian a) => AbelianMonoid a where
+-- | > exists invl. forall x. op (invl x) x = iden
+class Unital a => LeftInvertible a where
+  invl :: a -> a
+
+-- | > exists invr. forall x. op x (invr x) = iden
+class Unital a => RightInvertible a where
+  invr :: a -> a
 
 -- | > exists inv. invl = inv = invr
-class (Monoid a, LeftInverse a, RightInverse a) => Group a where
+class (LeftInvertible a, RightInvertible a) => Invertible a where
   inv :: a -> a
   inv = unamb invl invr
 
-class (Group a, Abelian a) => AbelianGroup a where
+type Monoid a = (Unital a, Semigroup a)
+
+type AbelianMonoid a = (Abelian a, Monoid a)
+
+type Group a = (Invertible a, Monoid a)
+
+type AbelianGroup a = (Abelian a, Group a)
