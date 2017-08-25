@@ -5,7 +5,13 @@ module Prelewd.Types (
   module Data.Monoid,
   module Prelewd.Types) where
 
+import Data.Bool (Bool (..))
 import Data.Monoid (Product (..), Sum (..))
+
+-- | Material implication.
+(==>) :: Bool -> Bool -> Bool
+False ==> _ = True
+True ==> y = y
 
 -- | Left inverse of `fmap` for `Sum`.
 unliftSum :: (Sum a -> Sum b) -> a -> b

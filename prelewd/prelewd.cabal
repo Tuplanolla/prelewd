@@ -1,7 +1,7 @@
 name:                prelewd
 version:             0.0.0
-synopsis:            A fun prelude.
-description:         The goal of this project was to explore abstract algebra.
+synopsis:            A solipsistic prelude.
+description:         The goal of this project is to explore abstract algebra.
 homepage:            https://github.com/Tuplanolla/prelewd
 license:             GPL-3
 license-file:        LICENSE
@@ -17,7 +17,7 @@ library
   hs-source-dirs:      src
   exposed-modules:     Prelewd, Prelewd.Combinators,
                        Prelewd.GroupLike, Prelewd.LatticeLike,
-                       Prelewd.RingLike, Prelewd.SpaceLike,
+                       Prelewd.ModuleLike, Prelewd.RingLike,
                        Prelewd.Types
   default-language:    Haskell2010
   build-depends:       base >= 4.7 && < 5
