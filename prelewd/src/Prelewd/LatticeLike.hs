@@ -1,4 +1,5 @@
 {-# LANGUAGE ConstraintKinds #-}
+{-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
 -- | Lattice-like structures.
@@ -7,18 +8,19 @@ module Prelewd.LatticeLike (
 
 import Data.Bool ((&&), Bool, not)
 import Prelewd.Combinators
+import Prelewd.GroupLike
 import Prelewd.Types
 
--- | > forall x. eq x x
--- > forall x y. eq x y = eq y x
--- > forall x y z. eq x y && eq y z ==> eq x z
+-- | > reflexivity :: forall x. eq x x = True
+-- > symmetry :: forall x y. eq x y = eq y x
+-- > transitivity :: forall x y z. eq x y && eq y z ==> eq x z = True
 class Equality a where
   eq :: a -> a -> Bool
   {-# MINIMAL eq #-}
 
--- | > forall x. le x x
--- > forall x y. le x y && le y x = eq x y
--- > forall x y z. le x y && le y z ==> le x z
+-- | > reflexivity :: forall x. le x x = True
+-- > antisymmetry :: forall x y. le x y && le y x = eq x y
+-- > transitivity :: forall x y z. le x y && le y z ==> le x z = True
 class Equality a => PartialOrder a where
   le :: a -> a -> Bool
   le x y = ge y x
@@ -30,12 +32,24 @@ class Equality a => PartialOrder a where
   gt x y = ge x y && not (eq x y)
   {-# MINIMAL le #-}
 
--- TODO MeetSemilattice
+-- | >
+type Semilattice a = (Idempotent a, Abelian a, Semigroup a)
 
--- TODO JoinSemilattice
+-- | > existence :: exists inf.
+-- > existence :: exists sup.
+-- > idempotency :: forall x. inf x x = x
+-- > symmetry :: forall x y. inf x y = inf y x
+-- > associativity :: forall x y z. inf (inf x y) z = inf x (inf y z)
+-- > idempotency :: forall x. sup x x = x
+-- > symmetry :: forall x y. sup x y = sup y x
+-- > associativity :: forall x y z. sup (sup x y) z = sup x (sup y z)
+class (Semilattice (Min a), Semilattice (Max a)) => Lattice a where
+  inf :: a -> a -> a
+  inf = unliftMin2 op
+  sup :: a -> a -> a
+  sup = unliftMax2 op
+  {-# MINIMAL #-}
 
--- TODO Semilattice
-
--- TODO Lattice
-
--- TODO TotalOrder
+-- | > totality :: forall x y. le x y || le y x = True
+class Lattice a => TotalOrder a where
+  {-# MINIMAL #-}

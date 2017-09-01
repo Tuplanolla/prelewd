@@ -10,9 +10,9 @@ import Prelewd.Combinators
 import Prelewd.GroupLike
 import Prelewd.Types
 
--- | > exists add.
--- > exists zero.
--- > exists mul.
+-- | > existence :: exists add.
+-- > existence :: exists zero.
+-- > existence :: exists mul.
 class (Monoid (Sum a), Semigroup (Product a)) => Ringoid a where
   add :: a -> a -> a
   add = unliftSum2 op
@@ -22,37 +22,39 @@ class (Monoid (Sum a), Semigroup (Product a)) => Ringoid a where
   mul = unliftProduct2 op
   {-# MINIMAL #-}
 
--- | > forall x y z. mul x (add y z) = add (mul x y) (mul x z)
--- > forall x. mul x zero = zero
-class Ringoid a => LeftSeminearring a
+-- | > leftDistributivity :: forall x y z. mul x (add y z) = add (mul x y) (mul x z)
+-- > leftAbsorption :: forall x. mul x zero = zero
+class Ringoid a => LeftSeminearring a where
+  {-# MINIMAL #-}
 
--- | > forall x y z. mul (add x y) z = add (mul x z) (mul y z)
--- > forall x. mul zero x = zero
-class Ringoid a => RightSeminearring a
+-- | > rightDistributivity :: forall x y z. mul (add x y) z = add (mul x z) (mul y z)
+-- > rightAbsorption :: forall x. mul zero x = zero
+class Ringoid a => RightSeminearring a where
+  {-# MINIMAL #-}
 
--- | This class is also known as `Nearsemiring`.
+-- | This type is also known as `NearSemiring`.
 type Seminearring a = (LeftSeminearring a, RightSeminearring a)
 
--- | > exists one.
+-- | > existence :: exists one.
 class (Seminearring a, Abelian (Sum a), Unital (Product a)) => Semiring a where
   one :: a
   one = getProduct iden
   {-# MINIMAL #-}
 
--- |
+-- | >
 type LeftNearring a = (LeftSeminearring a, Group (Sum a))
 
--- |
+-- | >
 type RightNearring a = (RightSeminearring a, Group (Sum a))
 
--- |
+-- | >
 type Nearring a = (LeftNearring a, RightNearring a)
 
--- |
+-- | >
 type Ring a = (Semiring a, Nearring a)
 
--- |
+-- | >
 type AbelianRing a = (Ring a, Abelian (Product a))
 
--- |
+-- | >
 type Field a = (AbelianRing a, Group (Product a))
