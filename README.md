@@ -214,3 +214,18 @@ The other cases are, again, tricky.
 
     /// The call `conj_mut(iox)`
     /// stores into `iox` the conjugate of `iox`.
+
+# Notes
+
+The following [has been said][kopperman-1998].
+
+> 1. *Definition.* A *value semigroup* is an additive abelian semigroup $A$
+> with identity $0$ and absorbing element $\infty \ne 0$, satisfying:
+> (vl) if $a + x = b$ and $b + y = a$ then $a = b$,
+> (thus $a < b$ iff $b = a + x$ for some $x$, defines a partial order),
+> (v2) for each $a$ there is a unique $b$ (called $(1/2) a$ or $a/2$)
+> such that $b + b = a$,
+> (v3) for each $a$, $b$ there is an inf, $a \wedge b$,
+> (v4) $a \wedge b + c = (a + c) \wedge (b + c)$.
+
+[kopperman-1998]: https://www.jstor.org/stable/2323060
