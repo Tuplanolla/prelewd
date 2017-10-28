@@ -6,43 +6,39 @@
 module Prelewd.LatticeLike (
   module Prelewd.LatticeLike) where
 
-import Data.Bool ((&&), Bool, not)
+import Data.Bool ((&&), Bool (..), not)
 import Prelewd.Combinators
 import Prelewd.GroupLike
 import Prelewd.Types
 
--- | > reflexivity :: forall x. eq x x = True
+-- | > reflexivityEq :: forall x. eq x x = True
 -- > symmetry :: forall x y. eq x y = eq y x
--- > transitivity :: forall x y z. eq x y && eq y z ==> eq x z = True
-class Equality a where
+-- > transitivityEq :: forall x y z. eq x y && eq y z ==> eq x z = True
+class Equivalence a where
   eq :: a -> a -> Bool
+  neq :: a -> a -> Bool
+  neq x y = not (eq x y)
   {-# MINIMAL eq #-}
 
--- | > reflexivity :: forall x. le x x = True
--- > antisymmetry :: forall x y. le x y && le y x = eq x y
--- > transitivity :: forall x y z. le x y && le y z ==> le x z = True
-class Equality a => PartialOrder a where
+-- | > reflexivityLe :: forall x. le x x = True
+-- > antisymmetry :: forall x y. le x y && le y x ==> eq x y = True
+-- > transitivityLe :: forall x y z. le x y && le y z ==> le x z = True
+--
+-- Laws extend to `lt`, `ge` and `gt`.
+class Equivalence a => PartialOrder a where
   le :: a -> a -> Bool
-  le x y = ge y x
+  lt :: a -> a -> Bool
+  lt x y = le x y && neq x y
   ge :: a -> a -> Bool
   ge x y = le y x
-  lt :: a -> a -> Bool
-  lt x y = le x y && not (eq x y)
   gt :: a -> a -> Bool
-  gt x y = ge x y && not (eq x y)
+  gt x y = lt y x
   {-# MINIMAL le #-}
 
 -- | >
 type Semilattice a = (Idempotent a, Abelian a, Semigroup a)
 
--- | > existence :: exists inf.
--- > existence :: exists sup.
--- > idempotency :: forall x. inf x x = x
--- > symmetry :: forall x y. inf x y = inf y x
--- > associativity :: forall x y z. inf (inf x y) z = inf x (inf y z)
--- > idempotency :: forall x. sup x x = x
--- > symmetry :: forall x y. sup x y = sup y x
--- > associativity :: forall x y z. sup (sup x y) z = sup x (sup y z)
+-- | Laws extend to `inf` and `sup`.
 class (Semilattice (Min a), Semilattice (Max a)) => Lattice a where
   inf :: a -> a -> a
   inf = unliftMin2 op

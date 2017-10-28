@@ -9,7 +9,7 @@ import Prelewd.Combinators
 
 -- TODO What to do with these?
 {-
--- | > existence :: exists fun.
+-- | >
 class Functional a where
   fun :: a -> a
   {-# MINIMAL fun #-}
@@ -19,7 +19,7 @@ class Functional a => Idempotent a where
   {-# MINIMAL #-}
 -}
 
--- | > existence :: exists op.
+-- | >
 class Magma a where
   op :: a -> a -> a
   {-# MINIMAL op #-}
@@ -43,20 +43,17 @@ class Magma a => Semigroup a where
 -- | This type is also known as `IdempotentSemigroup`.
 type Band a = (Idempotent a, Semigroup a)
 
--- | > existence :: exists idenl.
--- > leftIdentity :: forall x. op idenl x = x
+-- | > leftIdentity :: forall x. op idenl x = x
 class Magma a => LeftUnital a where
   idenl :: a
   {-# MINIMAL idenl #-}
 
--- | > existence :: exists idenr.
--- > rightIdentity :: forall x. op x idenr = x
+-- | > rightIdentity :: forall x. op x idenr = x
 class Magma a => RightUnital a where
   idenr :: a
   {-# MINIMAL idenr #-}
 
--- | > existence :: exists iden.
--- > identity :: idenl = iden = idenr
+-- | > identity :: idenl = iden = idenr
 --
 -- This class is also known as `Identified` or `Pointed`.
 class (LeftUnital a, RightUnital a) => Unital a where
@@ -64,20 +61,17 @@ class (LeftUnital a, RightUnital a) => Unital a where
   iden = unamb idenl idenr
   {-# MINIMAL #-}
 
--- | > existence :: exists invl.
--- > leftInverse :: forall x. op (invl x) x = iden
+-- | > leftInverse :: forall x. op (invl x) x = iden
 class Unital a => LeftInvertible a where
   invl :: a -> a
   {-# MINIMAL invl #-}
 
--- | > existence :: exists invr.
--- > rightInverse :: forall x. op x (invr x) = iden
+-- | > rightInverse :: forall x. op x (invr x) = iden
 class Unital a => RightInvertible a where
   invr :: a -> a
   {-# MINIMAL invr #-}
 
--- | > existence :: exists inv.
--- > inverse :: forall x. invl x = inv x = invr x
+-- | > inverse :: forall x. invl x = inv x = invr x
 class (LeftInvertible a, RightInvertible a) => Invertible a where
   inv :: a -> a
   inv = unamb invl invr

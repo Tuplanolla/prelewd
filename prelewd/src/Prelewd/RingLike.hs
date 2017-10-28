@@ -10,9 +10,7 @@ import Prelewd.Combinators
 import Prelewd.GroupLike
 import Prelewd.Types
 
--- | > existence :: exists add.
--- > existence :: exists zero.
--- > existence :: exists mul.
+-- | Laws extend to `add`, `zero` and `mul`.
 class (Monoid (Sum a), Semigroup (Product a)) => Ringoid a where
   add :: a -> a -> a
   add = unliftSum2 op
@@ -35,7 +33,7 @@ class Ringoid a => RightSeminearring a where
 -- | This type is also known as `NearSemiring`.
 type Seminearring a = (LeftSeminearring a, RightSeminearring a)
 
--- | > existence :: exists one.
+-- | Laws extend to `one`.
 class (Seminearring a, Abelian (Sum a), Unital (Product a)) => Semiring a where
   one :: a
   one = getProduct iden

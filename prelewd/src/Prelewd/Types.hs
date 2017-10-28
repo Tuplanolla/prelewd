@@ -9,15 +9,16 @@ module Prelewd.Types (
 import Data.Bool (Bool (..))
 import Data.Monoid (Product (..), Sum (..))
 import Data.Semigroup (Max (..), Min (..))
+import Prelewd.Combinators
 
 -- | Material implication.
 implies :: Bool -> Bool -> Bool
-implies False _ = True
-implies True y = y
+implies _ False = True
+implies x True = x
 
 -- | See `implies`.
 (==>) :: Bool -> Bool -> Bool
-(==>) = implies
+(==>) = flip implies
 infixr 4 ==>
 
 -- | Left inverse of `fmap` for `Sum`.
