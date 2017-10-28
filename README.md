@@ -1,3 +1,128 @@
+# Prelewd for C11
+
+## Types
+
+| C   | Header        | Type Qualifier
+|:----|:--------------|:---------------
+| C89 |               | `const`
+| C89 |               | `volatile`
+| C99 |               | `restrict`
+| C11 | `stdatomic.h` | `atomic`
+
+| C   | Header        | Signed Type              | Unsigned Type
+|:----|:--------------|:-------------------------|:-------------------------
+| C99 | `stdbool.h`   |                          | `bool`
+| C89 |               | `char`                   | `char`
+| C89 |               | `signed char`            | `unsigned char`
+| C89 |               | `short int`              | `unsigned short int`
+| C89 |               | `int`                    | `unsigned int`
+| C89 |               | `long int`               | `unsigned long int`
+| C99 |               | `long long int`          | `unsigned long long int`
+| C89 | `stddef.h`    |                          | `size_t`
+| C89 | `stddef.h`    | `ptrdiff_t`              |
+| C99 | `stdint.h`    | `int8_t`                 | `uint8_t`
+| C99 | `stdint.h`    | `int_least8_t`           | `uint_least8_t`
+| C99 | `stdint.h`    | `int_fast8_t`            | `uint_fast8_t`
+| C99 | `stdint.h`    | `int16_t`                | `uint16_t`
+| C99 | `stdint.h`    | `int_least16_t`          | `uint_least16_t`
+| C99 | `stdint.h`    | `int_fast16_t`           | `uint_fast16_t`
+| C99 | `stdint.h`    | `int32_t`                | `uint32_t`
+| C99 | `stdint.h`    | `int_least32_t`          | `uint_least32_t`
+| C99 | `stdint.h`    | `int_fast32_t`           | `uint_fast32_t`
+| C99 | `stdint.h`    | `int64_t`                | `uint64_t`
+| C99 | `stdint.h`    | `int_least64_t`          | `uint_least64_t`
+| C99 | `stdint.h`    | `int_fast64_t`           | `uint_fast64_t`
+| C99 | `stdint.h`    | `intptr_t`               | `uintptr_t`
+| C99 | `stdint.h`    | `intmax_t`               | `uintmax_t`
+| C89 |               | `float`                  |
+| C89 |               | `double`                 |
+| C99 |               | `long double`            |
+| C99 | `math.h`      | `float_t`                |
+| C99 | `math.h`      | `double_t`               |
+| C99 | `complex.h`   | `complex float`          |
+| C99 | `complex.h`   | `complex double`         |
+| C99 | `complex.h`   | `complex long double`    |
+
+| C   | Header        | Type                     | Minimum Value      | Maximum Value
+|:----|:--------------|:-------------------------|:-------------------|:-------------------
+|     |               |                          |                    |
+| C89 | `limits.h`    | `char`                   | `CHAR_MIN`         | `CHAR_MAX`
+| C89 | `limits.h`    | `signed char`            | `SCHAR_MIN`        | `SCHAR_MAX`
+| C89 | `limits.h`    | `short int`              | `SHRT_MIN`         | `SHRT_MAX`
+| C89 | `limits.h`    | `int`                    | `INT_MIN`          | `INT_MAX`
+| C89 | `limits.h`    | `long int`               | `LONG_MIN`         | `LONG_MAX`
+| C99 | `limits.h`    | `long long int`          | `LLONG_MIN`        | `LLONG_MAX`
+|     |               |                          |                    |
+| C99 | `stdint.h`    | `ptrdiff_t`              | `PTRDIFF_MIN`      | `PTRDIFF_MAX`
+| C99 | `stdint.h`    | `int8_t`                 | `INT8_MIN`         | `INT8_MAX`
+| C99 | `stdint.h`    | `int_least8_t`           | `INT_LEAST8_MIN`   | `INT_LEAST8_MAX`
+| C99 | `stdint.h`    | `int_fast8_t`            | `INT_FAST8_MIN`    | `INT_FAST8_MAX`
+| C99 | `stdint.h`    | `int16_t`                | `INT16_MIN`        | `INT16_MAX`
+| C99 | `stdint.h`    | `int_least16_t`          | `INT_LEAST16_MIN`  | `INT_LEAST16_MAX`
+| C99 | `stdint.h`    | `int_fast16_t`           | `INT_FAST16_MIN`   | `INT_FAST16_MAX`
+| C99 | `stdint.h`    | `int32_t`                | `INT32_MIN`        | `INT32_MAX`
+| C99 | `stdint.h`    | `int_least32_t`          | `INT_LEAST32_MIN`  | `INT_LEAST32_MAX`
+| C99 | `stdint.h`    | `int_fast32_t`           | `INT_FAST32_MIN`   | `INT_FAST32_MAX`
+| C99 | `stdint.h`    | `int64_t`                | `INT64_MIN`        | `INT64_MAX`
+| C99 | `stdint.h`    | `int_least64_t`          | `INT_LEAST64_MIN`  | `INT_LEAST64_MAX`
+| C99 | `stdint.h`    | `int_fast64_t`           | `INT_FAST64_MIN`   | `INT_FAST64_MAX`
+| C99 | `stdint.h`    | `intptr_t`               | `INTPTR_MIN`       | `INTPTR_MAX`
+| C99 | `stdint.h`    | `intmax_t`               | `INTMAX_MIN`       | `INTMAX_MAX`
+| C99 | `float.h`     | `float`                  | `-FLT_MAX`         | `FLT_MAX`
+| C99 | `float.h`     | `double`                 | `-DBL_MAX`         | `DBL_MAX`
+| C99 | `float.h`     | `long double`            | `-LDBL_MAX`        | `LDBL_MAX`
+|     |               | `float_t`                |                    |
+|     |               | `double_t`               |                    |
+|     |               | `complex float`          |                    |
+|     |               | `complex double`         |                    |
+|     |               | `complex long double`    |                    |
+
+| C   | Header        | Type                     | Minimum Value      | Maximum Value
+|:----|:--------------|:-------------------------|:-------------------|:-------------------
+|     |               | `bool`                   | `false`            | `true`
+| C89 | `limits.h`    | `char`                   | `0`                | `CHAR_MAX`
+| C89 | `limits.h`    | `unsigned char`          | `0`                | `UCHAR_MAX`
+| C89 | `limits.h`    | `unsigned short int`     | `0`                | `USHRT_MAX`
+| C89 | `limits.h`    | `unsigned int`           | `0`                | `UINT_MAX`
+| C89 | `limits.h`    | `unsigned long int`      | `0`                | `ULONG_MAX`
+| C99 | `limits.h`    | `unsigned long long int` | `0`                | `ULLONG_MAX`
+| C99 | `stdint.h`    | `size_t`                 | `0`                | `SIZE_MAX`
+|     |               |                          |                    |
+| C99 | `stdint.h`    | `uint8_t`                | `0`                | `UINT8_MAX`
+| C99 | `stdint.h`    | `uint_least8_t`          | `0`                | `UINT_LEAST8_MAX`
+| C99 | `stdint.h`    | `uint_fast8_t`           | `0`                | `UINT_FAST8_MAX`
+| C99 | `stdint.h`    | `uint16_t`               | `0`                | `UINT16_MAX`
+| C99 | `stdint.h`    | `uint_least16_t`         | `0`                | `UINT_LEAST16_MAX`
+| C99 | `stdint.h`    | `uint_fast16_t`          | `0`                | `UINT_FAST16_MAX`
+| C99 | `stdint.h`    | `uint32_t`               | `0`                | `UINT32_MAX`
+| C99 | `stdint.h`    | `uint_least32_t`         | `0`                | `UINT_LEAST32_MAX`
+| C99 | `stdint.h`    | `uint_fast32_t`          | `0`                | `UINT_FAST32_MAX`
+| C99 | `stdint.h`    | `uint64_t`               | `0`                | `UINT64_MAX`
+| C99 | `stdint.h`    | `uint_least64_t`         | `0`                | `UINT_LEAST64_MAX`
+| C99 | `stdint.h`    | `uint_fast64_t`          | `0`                | `UINT_FAST64_MAX`
+| C99 | `stdint.h`    | `uintptr_t`              | `0`                | `UINTPTR_MAX`
+| C99 | `stdint.h`    | `uintmax_t`              | `0`                | `UINTMAX_MAX`
+|     |               |                          |                    |
+|     |               |                          |                    |
+|     |               |                          |                    |
+|     |               |                          |                    |
+|     |               |                          |                    |
+|     |               |                          |                    |
+|     |               |                          |                    |
+|     |               |                          |                    |
+
+## Naming Conventions
+
+All names consist of tokens that are eight or fewer characters long.
+Procedures are prefixed with the `namespace##_` token.
+Higher-order procedures that take closures
+are suffixed with the `##_cls` token.
+Procedures that need to emphasize mutation
+are suffixed with the `##_mut` token.
+In-parameters do not have prefixes or suffixes.
+Out-parameters that are written only use the prefix `o##`.
+Out-parameters that are read and written use the prefix `io##`.
+
 #### Number Systems
 
 These may be implemented for various number types.
