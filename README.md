@@ -123,6 +123,29 @@ In-parameters do not have prefixes or suffixes.
 Out-parameters that are written only use the prefix `o##`.
 Out-parameters that are read and written use the prefix `io##`.
 
+## More Naming
+
+The term "subscript" is defined in section 6.5.2.1 of N1570
+to mean accessing a member of an array.
+The term "call" is defined in section 6.5.2.2 of N1570
+to mean passing arguments to a procedure.
+The term "indirect" is defined in section 6.5.3.2 of N1570
+to mean accessing a reference.
+The term "invoke" is defined in section 6.10.3 of N1570
+to mean providing a macro with arguments.
+The term "concatenate" is defined in section 6.10.3.3 of N1570
+to mean combining two tokens into one.
+
+To avoid conflicts, we use the following terms.
+The term "index" is defined
+to mean accessing a definition.
+The term "get" is defined
+to mean accessing a member of a list.
+The term "apply" is defined
+to mean passing arguments to a macro.
+The term "eval" is defined
+to mean indexing followed by application.
+
 #### Number Systems
 
 These may be implemented for various number types.

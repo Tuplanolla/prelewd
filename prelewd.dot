@@ -1,0 +1,48 @@
+digraph {
+  node [style = solid]
+
+  PRELEWD_TYPE [label = "\N\ntype.h"]
+  PRELEWD_FOLDL [label = "\N\nfold.h"]
+  PRELEWD_FOLDR [label = "\N\nfold.h"]
+  PRELEWD_EVAL [label = "\N\neval.h"]
+  PRELEWD_LENGTH [label = "\N\nlength.h"]
+  PRELEWD_GET [label = "\N\nget.h"]
+  PRELEWD_SEQL [label = "\N\nseq.h"]
+  PRELEWD_SEQR [label = "\N\nseq.h"]
+  PRELEWD_APPLY [label = "\N\napply.h"]
+  PRELEWD_INDEX [label = "\N\nindex.h"]
+
+  node [style = dashed]
+
+  PRELEWD_FOLDL_64 [label = "\N\nfoldl.out.h"]
+  PRELEWD_FOLDR_64 [label = "\N\nfoldr.out.h"]
+  PRELEWD_GET_64 [label = "\N\nget.out.h"]
+  PRELEWD_SEQL_64 [label = "\N\nseql.out.h"]
+  PRELEWD_SEQR_64 [label = "\N\nseqr.out.h"]
+
+  PRELEWD_TYPE -> PRELEWD_FOLDR
+  PRELEWD_TYPE -> PRELEWD_INDEX
+
+  PRELEWD_FOLDL -> PRELEWD_EVAL
+  PRELEWD_FOLDL -> PRELEWD_FOLDL_64
+
+  PRELEWD_FOLDR -> PRELEWD_EVAL
+  PRELEWD_FOLDR -> PRELEWD_FOLDR_64
+
+  PRELEWD_EVAL -> PRELEWD_LENGTH
+  PRELEWD_EVAL -> PRELEWD_APPLY
+  PRELEWD_EVAL -> PRELEWD_INDEX
+
+  PRELEWD_LENGTH -> PRELEWD_APPLY
+  PRELEWD_LENGTH -> PRELEWD_GET_64
+  PRELEWD_LENGTH -> PRELEWD_SEQL_64
+
+  PRELEWD_GET -> PRELEWD_EVAL
+  PRELEWD_GET -> PRELEWD_GET_64
+
+  PRELEWD_SEQL -> PRELEWD_EVAL
+  PRELEWD_SEQL -> PRELEWD_SEQL_64
+
+  PRELEWD_SEQR -> PRELEWD_EVAL
+  PRELEWD_SEQR -> PRELEWD_SEQR_64
+}

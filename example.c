@@ -24,7 +24,7 @@ static T $(13, T)(void) {
 #undef T
 
 int main(void) {
-  if (printf("%d\n", $(min, int)($$(42, int), $$(13, int))) < 0)
+  if (printf("%d\n", $(min, int)($(42, int)(), $(13, int)())) < 0)
     return false;
 
   return EXIT_SUCCESS;
