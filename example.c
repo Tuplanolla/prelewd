@@ -1,11 +1,7 @@
-#include <limits.h>
-#include <stdbool.h>
-#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-#include "magic.h"
+#include "type.h"
 
 #define T int
 
@@ -25,7 +21,7 @@ static T $(13, T)(void) {
 
 int main(void) {
   if (printf("%d\n", $(min, int)($(42, int)(), $(13, int)())) < 0)
-    return false;
+    return EXIT_FAILURE;
 
   return EXIT_SUCCESS;
 }
