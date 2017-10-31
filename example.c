@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "type.h"
+#include "prelewd.h"
 
 #define T int
 
