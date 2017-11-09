@@ -10,8 +10,7 @@
 /// The macro invocation `PRELEWD_TYPE(x, ...)` expands
 /// to the type instantiation of the value `x` at the types `...`.
 /// Each type has to be single token due to the limitations of the language,
-/// but this can always be satisfied by using `typedef`.
-/// The header `alias.h` is also provided for convenience.
+/// but this can always be done by using `typedef`.
 #define PRELEWD_TYPE(...) PRELEWD_FOLDR(PRELEWD_INDEX, S, __VA_ARGS__)
 
 /// Avoid namespace conflicts.

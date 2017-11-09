@@ -1,2 +1,7 @@
+*.gch
+*.i
 *.o
 *.out
+*.run
+*.s
+/tests

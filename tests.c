@@ -1,9 +1,12 @@
+#include <cheat.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "prelewd.h"
 
 #define T int
+
+CHEAT_DECLARE(
 
 static T $(min, T)(T const x, T const y) {
   return x < y ? x : y;
@@ -17,11 +20,12 @@ static T $(13, T)(void) {
   return 13;
 }
 
+)
+
 #undef T
 
-int main(void) {
-  if (printf("%d\n", $(min, int)($(42, int)(), $(13, int)())) < 0)
-    return EXIT_FAILURE;
+CHEAT_TEST(example,
 
-  return EXIT_SUCCESS;
-}
+cheat_assert($(min, int)($(42, int)(), $(13, int)()) == 13);
+
+)
