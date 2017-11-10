@@ -1,5 +1,7 @@
 # Prelewd for C11
 
+We ignore deprecations and annex K.
+
 ## Types
 
 | C   | Header        | Type Qualifier
@@ -9,44 +11,51 @@
 | C99 |               | `restrict`
 | C11 | `stdatomic.h` | `atomic`
 
-| C   | Header        | Signed Type              | Unsigned Type
-|:----|:--------------|:-------------------------|:-------------------------
-| C99 | `stdbool.h`   |                          | `bool`
-| C89 |               | `char`                   | `char`
-| C89 |               | `signed char`            | `unsigned char`
-| C89 |               | `short int`              | `unsigned short int`
-| C89 |               | `int`                    | `unsigned int`
-| C89 |               | `long int`               | `unsigned long int`
-| C99 |               | `long long int`          | `unsigned long long int`
-| C89 | `stddef.h`    |                          | `size_t`
-| C89 | `stddef.h`    | `ptrdiff_t`              |
-| C99 | `stdint.h`    | `int8_t`                 | `uint8_t`
-| C99 | `stdint.h`    | `int_least8_t`           | `uint_least8_t`
-| C99 | `stdint.h`    | `int_fast8_t`            | `uint_fast8_t`
-| C99 | `stdint.h`    | `int16_t`                | `uint16_t`
-| C99 | `stdint.h`    | `int_least16_t`          | `uint_least16_t`
-| C99 | `stdint.h`    | `int_fast16_t`           | `uint_fast16_t`
-| C99 | `stdint.h`    | `int32_t`                | `uint32_t`
-| C99 | `stdint.h`    | `int_least32_t`          | `uint_least32_t`
-| C99 | `stdint.h`    | `int_fast32_t`           | `uint_fast32_t`
-| C99 | `stdint.h`    | `int64_t`                | `uint64_t`
-| C99 | `stdint.h`    | `int_least64_t`          | `uint_least64_t`
-| C99 | `stdint.h`    | `int_fast64_t`           | `uint_fast64_t`
-| C99 | `stdint.h`    | `intptr_t`               | `uintptr_t`
-| C99 | `stdint.h`    | `intmax_t`               | `uintmax_t`
-| C89 |               | `float`                  |
-| C89 |               | `double`                 |
-| C99 |               | `long double`            |
-| C99 | `math.h`      | `float_t`                |
-| C99 | `math.h`      | `double_t`               |
-| C99 | `complex.h`   | `complex float`          |
-| C99 | `complex.h`   | `complex double`         |
-| C99 | `complex.h`   | `complex long double`    |
+| C   | Header        | Type                     | Signed Type              | Unsigned Type
+|:----|:--------------|:-------------------------|:-------------------------|:-------------------------
+| C99 | `stdbool.h`   | `bool`                   |                          |
+| C89 |               |                          | `signed char`            | `unsigned char`
+| C89 |               |                          | `short int`              | `unsigned short int`
+| C89 |               |                          | `int`                    | `unsigned int`
+| C89 |               |                          | `long int`               | `unsigned long int`
+| C99 |               |                          | `long long int`          | `unsigned long long int`
+| C89 | `stddef.h`    |                          |                          | `size_t`
+| C89 | `stddef.h`    |                          | `ptrdiff_t`              |
+| C11 | `stddef.h`    | `max_align_t`            |                          |
+| C99 | `stdint.h`    |                          | `int8_t`                 | `uint8_t`
+| C99 | `stdint.h`    |                          | `int_least8_t`           | `uint_least8_t`
+| C99 | `stdint.h`    |                          | `int_fast8_t`            | `uint_fast8_t`
+| C99 | `stdint.h`    |                          | `int16_t`                | `uint16_t`
+| C99 | `stdint.h`    |                          | `int_least16_t`          | `uint_least16_t`
+| C99 | `stdint.h`    |                          | `int_fast16_t`           | `uint_fast16_t`
+| C99 | `stdint.h`    |                          | `int32_t`                | `uint32_t`
+| C99 | `stdint.h`    |                          | `int_least32_t`          | `uint_least32_t`
+| C99 | `stdint.h`    |                          | `int_fast32_t`           | `uint_fast32_t`
+| C99 | `stdint.h`    |                          | `int64_t`                | `uint64_t`
+| C99 | `stdint.h`    |                          | `int_least64_t`          | `uint_least64_t`
+| C99 | `stdint.h`    |                          | `int_fast64_t`           | `uint_fast64_t`
+| C99 | `stdint.h`    |                          | `intptr_t`               | `uintptr_t`
+| C99 | `stdint.h`    |                          | `intmax_t`               | `uintmax_t`
+| C89 |               |                          | `float`                  |
+| C89 |               |                          | `double`                 |
+| C99 |               |                          | `long double`            |
+| C99 | `math.h`      |                          | `float_t`                |
+| C99 | `math.h`      |                          | `double_t`               |
+| C99 | `complex.h`   |                          | `complex float`          |
+| C99 | `complex.h`   |                          | `complex double`         |
+| C99 | `complex.h`   |                          | `complex long double`    |
+| C89 |               |                          | `char`                   | `char`
+| C95 | `wchar.h`     |                          | `wchar_t`                | `wchar_t`
+| C95 | `wchar.h`     | `mbstate_t`              |                          |
+| C95 | `wctype.h`    |                          | `wint_t`                 | `wint_t`
+| C95 | `wctype.h`    | `wctype_t`               |                          |
+| C95 | `wctype.h`    | `wctrans_t`              |                          |
+| C89 | `signal.h`    |                          | `sig_atomic_t`           | `sig_atomic_t`
+| C11 | `uchar.h`     |                          |                          | `char16_t`
+| C11 | `uchar.h`     |                          |                          | `char32_t`
 
 | C   | Header        | Type                     | Minimum Value      | Maximum Value
 |:----|:--------------|:-------------------------|:-------------------|:-------------------
-|     |               |                          |                    |
-| C89 | `limits.h`    | `char`                   | `CHAR_MIN`         | `CHAR_MAX`
 | C89 | `limits.h`    | `signed char`            | `SCHAR_MIN`        | `SCHAR_MAX`
 | C89 | `limits.h`    | `short int`              | `SHRT_MIN`         | `SHRT_MAX`
 | C89 | `limits.h`    | `int`                    | `INT_MIN`          | `INT_MAX`
@@ -76,11 +85,13 @@
 |     |               | `complex float`          |                    |
 |     |               | `complex double`         |                    |
 |     |               | `complex long double`    |                    |
+| C89 | `limits.h`    | `char`                   | `CHAR_MIN`         | `CHAR_MAX`
+| C99 | `stdint.h`    | `sig_atomic_t`           | `SIG_ATOMIC_MIN`   | `SIG_ATOMIC_MAX`
+| C95 | `wchar.h`     | `wchar_t`                | `WCHAR_MIN`        | `WCHAR_MAX`
+| C99 | `stdint.h`    | `wint_t`                 | `WINT_MIN`         | `WINT_MAX`
 
 | C   | Header        | Type                     | Minimum Value      | Maximum Value
 |:----|:--------------|:-------------------------|:-------------------|:-------------------
-|     |               | `bool`                   | `false`            | `true`
-| C89 | `limits.h`    | `char`                   | `0`                | `CHAR_MAX`
 | C89 | `limits.h`    | `unsigned char`          | `0`                | `UCHAR_MAX`
 | C89 | `limits.h`    | `unsigned short int`     | `0`                | `USHRT_MAX`
 | C89 | `limits.h`    | `unsigned int`           | `0`                | `UINT_MAX`
@@ -110,6 +121,10 @@
 |     |               |                          |                    |
 |     |               |                          |                    |
 |     |               |                          |                    |
+| C89 | `limits.h`    | `char`                   | `0`                | `CHAR_MAX`
+| C99 | `stdint.h`    | `sig_atomic_t`           | `0`                | `SIG_ATOMIC_MAX`
+| C11 | `stdint.h`    | `char16_t`               | `0`                | `UINT_LEAST16_MAX`
+| C11 | `stdint.h`    | `char32_t`               | `0`                | `UINT_LEAST32_MAX`
 
 ## Naming Conventions
 
@@ -377,3 +392,825 @@ The following [has been said][kopperman-1998].
 > (v4) $a \wedge b + c = (a + c) \wedge (b + c)$.
 
 [kopperman-1998]: https://www.jstor.org/stable/2323060
+
+## Operators
+
+    () [] -> .                           left to right
+    ! ~ ++ -- + - (type) * & sizeof      right to left
+    * / %                                left to right
+    + -                                  left to right
+    << >>                                left to right
+    < <= > >=                            left to right
+    == !=                                left to right
+    &                                    left to right
+    ^                                    left to right
+    |                                    left to right
+    &&                                   left to right
+    ||                                   left to right
+    ?:                                   right to left
+    = += -= *= /= %= <<= >>= &= ^= |=    right to left
+    ,                                    left to right
+
+## Keywords
+
+    C89
+      auto
+      break
+      case
+      char
+      const
+      continue
+      default
+      do
+      double
+      else
+      enum
+      extern
+      float
+      for
+      goto
+      if
+      int
+      long
+      register
+      return
+      short
+      signed
+      sizeof
+      static
+      struct
+      switch
+      typedef
+      union
+      unsigned
+      void
+      volatile
+      while
+
+    C99
+      _Bool
+      _Complex
+      _Imaginary
+      inline
+      restrict
+
+    C11
+      _Alignas
+      _Alignof
+      _Atomic
+      _Generic
+      _Noreturn
+      _Static_assert
+      _Thread_local
+
+## Prototypes
+
+    C89:
+      <assert.h>
+        void assert(_Generic);
+
+      <ctype.h>
+        int isalnum(int);
+        int isalpha(int);
+        int isblank(int);
+        int iscntrl(int);
+        int isdigit(int);
+        int isgraph(int);
+        int islower(int);
+        int isprint(int);
+        int ispunct(int);
+        int isspace(int);
+        int isupper(int);
+        int isxdigit(int);
+        int tolower(int);
+        int toupper(int);
+
+      <errno.h>
+      <float.h>
+      <limits.h>
+      <locale.h>
+        struct lconv *localeconv(void);
+        char *setlocale(int, char const *);
+
+      <math.h>
+        int fpclassify(_Generic);
+        int isfinite(_Generic);
+        int isinf(_Generic);
+        int isnan(_Generic);
+        int isnormal(_Generic);
+        int signbit(_Generic);
+        int isgreater(_Generic, _Generic);
+        int isgreaterequal(_Generic, _Generic);
+        int isless(_Generic, _Generic);
+        int islessequal(_Generic, _Generic);
+        int islessgreater(_Generic, _Generic);
+        int isunordered(_Generic, _Generic);
+        double acos(double);
+        float acosf(float);
+        double acosh(double);
+        float acoshf(float);
+        long double acoshl(long double);
+        long double acosl(long double);
+        double asin(double);
+        float asinf(float);
+        double asinh(double);
+        float asinhf(float);
+        long double asinhl(long double);
+        long double asinl(long double);
+        double atan(double);
+        double atan2(double, double);
+        float atan2f(float, float);
+        long double atan2l(long double, long double);
+        float atanf(float);
+        double atanh(double);
+        float atanhf(float);
+        long double atanhl(long double);
+        long double atanl(long double);
+        double cbrt(double);
+        float cbrtf(float);
+        long double cbrtl(long double);
+        double ceil(double);
+        float ceilf(float);
+        long double ceill(long double);
+        double copysign(double, double);
+        float copysignf(float, float);
+        long double copysignl(long double, long double);
+        double cos(double);
+        float cosf(float);
+        double cosh(double);
+        float coshf(float);
+        long double coshl(long double);
+        long double cosl(long double);
+        double erf(double);
+        double erfc(double);
+        float erfcf(float);
+        long double erfcl(long double);
+        float erff(float);
+        long double erfl(long double);
+        double exp(double);
+        double exp2(double);
+        float exp2f(float);
+        long double exp2l(long double);
+        float expf(float);
+        long double expl(long double);
+        double expm1(double);
+        float expm1f(float);
+        long double expm1l(long double);
+        double fabs(double);
+        float fabsf(float);
+        long double fabsl(long double);
+        double fdim(double, double);
+        float fdimf(float, float);
+        long double fdiml(long double, long double);
+        double floor(double);
+        float floorf(float);
+        long double floorl(long double);
+        double fma(double, double, double);
+        float fmaf(float, float, float);
+        long double fmal(long double, long double, long double);
+        double fmax(double, double);
+        float fmaxf(float, float);
+        long double fmaxl(long double, long double);
+        double fmin(double, double);
+        float fminf(float, float);
+        long double fminl(long double, long double);
+        double fmod(double, double);
+        float fmodf(float, float);
+        long double fmodl(long double, long double);
+        double frexp(double, int *);
+        float frexpf(float value, int *);
+        long double frexpl(long double value, int *);
+        double hypot(double, double);
+        float hypotf(float, float);
+        long double hypotl(long double, long double);
+        int ilogb(double);
+        int ilogbf(float);
+        int ilogbl(long double);
+        double ldexp(double, int);
+        float ldexpf(float, int);
+        long double ldexpl(long double, int);
+        double lgamma(double);
+        float lgammaf(float);
+        long double lgammal(long double);
+        long long llrint(double);
+        long long llrintf(float);
+        long long llrintl(long double);
+        long long llround(double);
+        long long llroundf(float);
+        long long llroundl(long double);
+        double log(double);
+        double log10(double);
+        float log10f(float);
+        long double log10l(long double);
+        double log1p(double);
+        float log1pf(float);
+        long double log1pl(long double);
+        double log2(double);
+        float log2f(float);
+        long double log2l(long double);
+        double logb(double);
+        float logbf(float);
+        long double logbl(long double);
+        float logf(float);
+        long double logl(long double);
+        long lrint(double);
+        long lrintf(float);
+        long lrintl(long double);
+        long lround(double);
+        long lroundf(float);
+        long lroundl(long double);
+        double modf(double, double *);
+        float modff(float, float *);
+        long double modfl(long double, long double *);
+        double nan(char const *);
+        float nanf(char const *);
+        long double nanl(char const *);
+        double nearbyint(double);
+        float nearbyintf(float);
+        long double nearbyintl(long double);
+        double nextafter(double, double);
+        float nextafterf(float, float);
+        long double nextafterl(long double, long double);
+        double nexttoward(double, long double);
+        float nexttowardf(float, long double);
+        long double nexttowardl(long double, long double);
+        double pow(double, double);
+        float powf(float, float);
+        long double powl(long double, long double);
+        double remainder(double, double);
+        float remainderf(float, float);
+        long double remainderl(long double, long double);
+        double remquo(double, double, int *);
+        float remquof(float, float, int *);
+        long double remquol(long double, long double, int *);
+        double rint(double);
+        float rintf(float);
+        long double rintl(long double);
+        double round(double);
+        float roundf(float);
+        long double roundl(long double);
+        double scalbln(double, long);
+        float scalblnf(float, long);
+        long double scalblnl(long double, long);
+        double scalbn(double, int);
+        float scalbnf(float, int);
+        long double scalbnl(long double, int);
+        double sin(double);
+        float sinf(float);
+        double sinh(double);
+        float sinhf(float);
+        long double sinhl(long double);
+        long double sinl(long double);
+        double sqrt(double);
+        float sqrtf(float);
+        long double sqrtl(long double);
+        double tan(double);
+        float tanf(float);
+        double tanh(double);
+        float tanhf(float);
+        long double tanhl(long double);
+        long double tanl(long double);
+        double tgamma(double);
+        float tgammaf(float);
+        long double tgammal(long double);
+        double trunc(double);
+        float truncf(float);
+        long double truncl(long double);
+
+      <setjmp.h>
+        void longjmp(jmp_buf, int);
+        int setjmp(jmp_buf);
+
+      <signal.h>
+        void (*signal(int, void (*)(int)))(int);
+
+      <stdarg.h>
+        void va_start(va_list, _Generic);
+        void va_copy(va_list, va_list);
+        _Generic va_arg(va_list, _Generic);
+        void va_end(va_list);
+
+      <stddef.h>
+      <stdio.h>
+        void clearerr(FILE *);
+        int fclose(FILE *);
+        int feof(FILE *);
+        int ferror(FILE *);
+        int fflush(FILE *);
+        int fgetc(FILE *);
+        int fgetpos(FILE *restrict, fpos_t *restrict);
+        char *fgets(char *restrict, int, FILE *restrict);
+        FILE *fopen(char const *restrict, char const *restrict);
+        int fprintf(FILE *restrict, char const *restrict, ...);
+        int fputc(int, FILE *);
+        int fputs(char const *restrict, FILE *restrict);
+        size_t fread(void *restrict, size_t, size_t, FILE *restrict);
+        FILE *freopen(char const *restrict, char const *restrict, FILE *restrict);
+        int fscanf(FILE *restrict, char const *restrict, ...);
+        int fseek(FILE *, long, int);
+        int fsetpos(FILE *, fpos_t const *);
+        long ftell(FILE *);
+        size_t fwrite(void const *restrict, size_t, size_t, FILE *restrict);
+        int getc(FILE *);
+        int getchar(void);
+        char *gets(char *);
+        void perror(char const *);
+        int printf(char const *restrict, ...);
+        int putc(int, FILE *);
+        int putchar(int);
+        int puts(char const *);
+        int remove(char const *);
+        int rename(char const *, char const *);
+        void rewind(FILE *);
+        int scanf(char const *restrict, ...);
+        void setbuf(FILE *restrict, char *restrict);
+        int setvbuf(FILE *restrict, char *restrict, int, size_t);
+        int snprintf(char *restrict, size_t, char const *restrict, ...);
+        int sprintf(char *restrict, char const *restrict, ...);
+        int sscanf(char const *restrict, char const *restrict, ...);
+        FILE *tmpfile(void);
+        char *tmpnam(char *);
+        int ungetc(int, FILE *);
+        int vfprintf(FILE *restrict, char const *restrict, va_list);
+        int vfscanf(FILE *restrict, char const *restrict, va_list);
+        int vprintf(char const *restrict, va_list);
+        int vscanf(char const *restrict, va_list);
+        int vsnprintf(char *restrict, size_t, char const *restrict, va_list);
+        int vsprintf(char *restrict, char const *restrict, va_list);
+        int vsscanf(char const *restrict, char const *restrict, va_list arg);
+
+      <stdlib.h>
+        void _Exit(int);
+        void abort(void);
+        int abs(int);
+        int atexit(void (*)(void));
+        double atof(char const *);
+        int atoi(char const *);
+        long atol(char const *);
+        long long atoll(char const *);
+        void *bsearch(void const *, void const *, size_t, size_t, int (*)(void const *, void const *));
+        void *calloc(size_t, size_t);
+        div_t div(int, int);
+        void exit(int);
+        void free(void *);
+        char *getenv(char const *);
+        long labs(long);
+        ldiv_t ldiv(long, long);
+        long long llabs(long long);
+        lldiv_t lldiv(long long, long long);
+        void *malloc(size_t);
+        int mblen(char const *, size_t);
+        size_t mbstowcs(wchar_t *restrict, char const *restrict, size_t);
+        int mbtowc(wchar_t *restrict, char const *restrict, size_t);
+        void qsort(void *, size_t, size_t, int (*)(void const *, void const *));
+        int rand(void);
+        void *realloc(void *, size_t);
+        void srand(unsigned);
+        double strtod(char const *restrict, char **restrict);
+        float strtof(char const *restrict, char **restrict);
+        long strtol(char const *restrict, char **restrict, int);
+        long double strtold(char const *restrict, char **restrict);
+        long long strtoll(char const *restrict, char **restrict, int);
+        unsigned long strtoul(char const *restrict, char **restrict, int);
+        unsigned long long strtoull(char const *restrict, char **restrict, int);
+        int system(char const *);
+        size_t wcstombs(char *restrict, wchar_t const *restrict, size_t);
+        int wctomb(char *, wchar_t);
+
+      <string.h>
+        void *memchr(void const *, int, size_t);
+        int memcmp(void const *, void const *, size_t);
+        void *memcpy(void *restrict, void const *restrict, size_t);
+        void *memmove(void *, void const *, size_t);
+        void *memset(void *, int, size_t);
+        char *strcat(char *restrict, char const *restrict);
+        char *strchr(char const *, int);
+        int strcmp(char const *, char const *);
+        int strcoll(char const *, char const *);
+        char *strcpy(char *restrict, char const *restrict);
+        size_t strcspn(char const *, char const *);
+        char *strerror(int);
+        size_t strlen(char const *);
+        char *strncat(char *restrict, char const *restrict, size_t);
+        int strncmp(char const *, char const *, size_t);
+        char *strncpy(char *restrict, char const *restrict, size_t);
+        char *strpbrk(char const *, char const *);
+        char *strrchr(char const *, int);
+        size_t strspn(char const *, char const *);
+        char *strstr(char const *, char const *);
+        char *strtok(char *restrict, char const *restrict);
+        size_t strxfrm(char *restrict, char const *restrict, size_t);
+
+      <time.h>
+        char *asctime(struct tm const *);
+        clock_t clock(void);
+        char *ctime(time_t const *);
+        double difftime(time_t, time_t);
+        struct tm *gmtime(time_t const *);
+        struct tm *localtime(time_t const *);
+        time_t mktime(struct tm *);
+        size_t strftime(char *restrict, size_t, char const *restrict, struct tm const *restrict);
+        time_t time(time_t *);
+
+    C95:
+      <iso646.h>
+      <wchar.h>
+        wint_t btowc(int);
+        wint_t fgetwc(FILE *);
+        wchar_t *fgetws(wchar_t *restrict, int, FILE *restrict);
+        wint_t fputwc(wchar_t, FILE *);
+        int fputws(wchar_t const *restrict, FILE *restrict);
+        int fwide(FILE *, int);
+        int fwprintf(FILE *restrict, wchar_t const *restrict, ...);
+        int fwscanf(FILE *restrict, wchar_t const *restrict, ...);
+        wint_t getwc(FILE *);
+        wint_t getwchar(void);
+        size_t mbrlen(char const *restrict, size_t, mbstate_t *restrict);
+        size_t mbrtowc(wchar_t *restrict, char const *restrict, size_t, mbstate_t *restrict);
+        int mbsinit(mbstate_t const *);
+        size_t mbsrtowcs(wchar_t *restrict, char const **restrict, size_t, mbstate_t *restrict);
+        wint_t putwc(wchar_t, FILE *);
+        wint_t putwchar(wchar_t);
+        int swprintf(wchar_t *restrict, size_t, wchar_t const *restrict, ...);
+        int swscanf(wchar_t const *restrict, wchar_t const *restrict, ...);
+        wint_t ungetwc(wint_t, FILE *);
+        int vfwprintf(FILE *restrict, wchar_t const *restrict, va_list);
+        int vfwscanf(FILE *restrict, wchar_t const *restrict, va_list);
+        int vwprintf(wchar_t const *restrict, va_list);
+        int vswprintf(wchar_t *restrict, size_t, wchar_t const *restrict, va_list);
+        int vswscanf(wchar_t const *restrict, wchar_t const *restrict, va_list);
+        int vwscanf(wchar_t const *restrict, va_list);
+        size_t wcrtomb(char *restrict, wchar_t, mbstate_t *restrict);
+        wchar_t *wcscat(wchar_t *restrict, wchar_t const *restrict);
+        wchar_t *wcschr(wchar_t const *, wchar_t);
+        int wcscmp(wchar_t const *, wchar_t const *);
+        int wcscoll(wchar_t const *, wchar_t const *);
+        wchar_t *wcscpy(wchar_t *restrict, wchar_t const *restrict);
+        size_t wcscspn(wchar_t const *, wchar_t const *);
+        size_t wcsftime(wchar_t *restrict, size_t, wchar_t const *restrict, struct tm const *restrict);
+        size_t wcslen(wchar_t const *);
+        wchar_t *wcsncat(wchar_t *restrict, wchar_t const *restrict, size_t);
+        int wcsncmp(wchar_t const *, wchar_t const *, size_t);
+        wchar_t *wcsncpy(wchar_t *restrict, wchar_t const *restrict, size_t);
+        wchar_t *wcspbrk(wchar_t const *, wchar_t const *);
+        wchar_t *wcsrchr(wchar_t const *, wchar_t);
+        size_t wcsrtombs(char *restrict, wchar_t const **restrict, size_t, mbstate_t *restrict);
+        size_t wcsspn(wchar_t const *, wchar_t const *);
+        wchar_t *wcsstr(wchar_t const *restrict, wchar_t const *restrict);
+        double wcstod(wchar_t const *restrict, wchar_t **restrict);
+        float wcstof(wchar_t const *restrict, wchar_t **restrict);
+        wchar_t *wcstok(wchar_t *restrict, wchar_t const *restrict, wchar_t **restrict);
+        long wcstol(wchar_t const *restrict, wchar_t **restrict, int);
+        long double wcstold(wchar_t const *restrict, wchar_t **restrict);
+        long long wcstoll(wchar_t const *restrict, wchar_t **restrict, int);
+        unsigned long wcstoul(wchar_t const *restrict, wchar_t **restrict, int);
+        unsigned long long wcstoull(wchar_t const *restrict, wchar_t **restrict, int);
+        size_t wcsxfrm(wchar_t *restrict, wchar_t const *restrict, size_t);
+        int wctob(wint_t);
+        wchar_t *wmemchr(wchar_t const *, wchar_t, size_t);
+        int wmemcmp(wchar_t const *, wchar_t const *, size_t);
+        wchar_t *wmemcpy(wchar_t *restrict, wchar_t const *restrict, size_t);
+        wchar_t *wmemmove(wchar_t *, wchar_t const *, size_t);
+        wchar_t *wmemset(wchar_t *, wchar_t, size_t);
+        int wprintf(wchar_t const *restrict, ...);
+        int wscanf(wchar_t const *restrict, ...);
+
+      <wctype.h>
+        int iswalnum(wint_t);
+        int iswalpha(wint_t);
+        int iswblank(wint_t);
+        int iswcntrl(wint_t);
+        int iswdigit(wint_t);
+        int iswgraph(wint_t);
+        int iswlower(wint_t);
+        int iswprint(wint_t);
+        int iswpunct(wint_t);
+        int iswspace(wint_t);
+        int iswupper(wint_t);
+        int iswxdigit(wint_t);
+        int iswctype(wint_t, wctype_t);
+        wint_t towctrans(wint_t, wctrans_t);
+        wint_t towlower(wint_t);
+        wint_t towupper(wint_t);
+        wctrans_t wctrans(char const *);
+        wctype_t wctype(char const *);
+
+    C99:
+      <complex.h>
+        double cabs(double complex);
+        float cabsf(float complex);
+        long double cabsl(long double complex);
+        double complex cacos(double complex);
+        float complex cacosf(float complex);
+        double complex cacosh(double complex);
+        float complex cacoshf(float complex);
+        long double complex cacoshl(long double complex);
+        long double complex cacosl(long double complex);
+        double carg(double complex);
+        float cargf(float complex);
+        long double cargl(long double complex);
+        double complex casin(double complex);
+        float complex casinf(float complex);
+        double complex casinh(double complex);
+        float complex casinhf(float complex);
+        long double complex casinhl(long double complex);
+        long double complex casinl(long double complex);
+        double complex catan(double complex);
+        float complex catanf(float complex);
+        double complex catanh(double complex);
+        float complex catanhf(float complex);
+        long double complex catanhl(long double complex);
+        long double complex catanl(long double complex);
+        double complex ccos(double complex);
+        float complex ccosf(float complex);
+        double complex ccosh(double complex);
+        float complex ccoshf(float complex);
+        long double complex ccoshl(long double complex);
+        long double complex ccosl(long double complex);
+        double complex cexp(double complex);
+        float complex cexpf(float complex);
+        long double complex cexpl(long double complex);
+        double cimag(double complex);
+        float cimagf(float complex);
+        long double cimagl(long double complex);
+        double complex clog(double complex);
+        float complex clogf(float complex);
+        long double complex clogl(long double complex);
+        double complex conj(double complex);
+        float complex conjf(float complex);
+        long double complex conjl(long double complex);
+        double complex cpow(double complex, double complex);
+        float complex cpowf(float complex, float complex);
+        long double complex cpowl(long double complex, long double complex);
+        double complex cproj(double complex);
+        float complex cprojf(float complex);
+        long double complex cprojl(long double complex);
+        double creal(double complex);
+        float crealf(float complex);
+        long double creall(long double complex);
+        double complex csin(double complex);
+        float complex csinf(float complex);
+        double complex csinh(double complex);
+        float complex csinhf(float complex);
+        long double complex csinhl(long double complex);
+        long double complex csinl(long double complex);
+        double complex csqrt(double complex);
+        float complex csqrtf(float complex);
+        long double complex csqrtl(long double complex);
+        double complex ctan(double complex);
+        float complex ctanf(float complex);
+        double complex ctanh(double complex);
+        float complex ctanhf(float complex);
+        long double complex ctanhl(long double complex);
+        long double complex ctanl(long double complex);
+
+      <fenv.h>
+        int feclearexcept(int);
+        int fegetexceptflag(fexcept_t *, int);
+        int feraiseexcept(int);
+        int fesetexceptflag(fexcept_t const *, int);
+        int fetestexcept(int);
+        int fegetround(void);
+        int fesetround(int);
+        int fegetenv(fenv_t *);
+        int feholdexcept(fenv_t *);
+        int fesetenv(fenv_t const *);
+        int feupdateenv(fenv_t const *);
+
+      <inttypes.h>
+        intmax_t imaxabs(intmax_t);
+        imaxdiv_t imaxdiv(intmax_t, intmax_t);
+        intmax_t strtoimax(char const *restrict, char **restrict, int);
+        uintmax_t strtoumax(char const *restrict, char **restrict, int);
+        intmax_t wcstoimax(wchar_t const *restrict, wchar_t **restrict, int);
+        uintmax_t wcstoumax(wchar_t const *restrict, wchar_t **restrict, int);
+
+      <stdint.h>
+      <stdbool.h>
+      <tgmath.h>
+        _Generic acos(_Generic)
+        _Generic asin(_Generic)
+        _Generic atan(_Generic)
+        _Generic atan2(_Generic, _Generic)
+        _Generic ceil(_Generic)
+        _Generic cos(_Generic)
+        _Generic cosh(_Generic)
+        _Generic exp(_Generic)
+        _Generic fabs(_Generic)
+        _Generic floor(_Generic)
+        _Generic fmod(_Generic, _Generic)
+        _Generic frexp(_Generic, _Generic)
+        _Generic ldexp(_Generic, _Generic)
+        _Generic log(_Generic)
+        _Generic log10(_Generic)
+        _Generic modf(_Generic, _Generic)
+        _Generic pow(_Generic, _Generic)
+        _Generic sin(_Generic)
+        _Generic sinh(_Generic)
+        _Generic sqrt(_Generic)
+        _Generic tan(_Generic)
+        _Generic tanh(_Generic)
+        _Generic isgreater(_Generic)
+        _Generic isnan(_Generic)
+        _Generic islessequal(_Generic)
+        _Generic isinf(_Generic)
+        _Generic signbit(_Generic)
+        _Generic cacos(_Generic)
+        _Generic casin(_Generic)
+        _Generic catan(_Generic)
+        _Generic catan2(_Generic, _Generic)
+        _Generic cceil(_Generic)
+        _Generic ccos(_Generic)
+        _Generic ccosh(_Generic)
+        _Generic cexp(_Generic)
+        _Generic cfabs(_Generic)
+        _Generic cfloor(_Generic)
+        _Generic cfmod(_Generic, _Generic)
+        _Generic cfrexp(_Generic, _Generic)
+        _Generic cldexp(_Generic, _Generic)
+        _Generic clog(_Generic)
+        _Generic clog10(_Generic)
+        _Generic cmodf(_Generic, _Generic)
+        _Generic cpow(_Generic, _Generic)
+        _Generic csin(_Generic)
+        _Generic csinh(_Generic)
+        _Generic csqrt(_Generic)
+        _Generic ctan(_Generic)
+        _Generic ctanh(_Generic)
+
+    C11:
+      <stdalign.h>
+      <stdatomic.h>
+      <threads.h>
+      <stdnoreturn.h>
+      <uchar.h>
+
+## Templates for Automatic Generation
+
+```
+/// Automatically generated code begins.
+
+
+#define A bool
+#include "ord_std.h"
+#undef A
+#define A char
+#include "ord_std.h"
+#undef A
+#define A signed_char
+#include "ord_std.h"
+#undef A
+#define A unsigned_char
+#include "ord_std.h"
+#undef A
+#define A short_int
+#include "ord_std.h"
+#undef A
+#define A unsigned_short_int
+#include "ord_std.h"
+#undef A
+#define A int
+#include "ord_std.h"
+#undef A
+#define A unsigned_int
+#include "ord_std.h"
+#undef A
+#define A long_int
+#include "ord_std.h"
+#undef A
+#define A unsigned_long_int
+#include "ord_std.h"
+#undef A
+#define A long_long_int
+#include "ord_std.h"
+#undef A
+#define A unsigned_long_long_int
+#include "ord_std.h"
+#undef A
+
+#define A size_t
+#include "ord_std.h"
+#undef A
+#define A ptrdiff_t
+#include "ord_std.h"
+#undef A
+
+#define A int8_t
+#include "ord_std.h"
+#undef A
+#define A uint8_t
+#include "ord_std.h"
+#undef A
+#define A int_least8_t
+#include "ord_std.h"
+#undef A
+#define A uint_least8_t
+#include "ord_std.h"
+#undef A
+#define A int_fast8_t
+#include "ord_std.h"
+#undef A
+#define A uint_fast8_t
+#include "ord_std.h"
+#undef A
+#define A int16_t
+#include "ord_std.h"
+#undef A
+#define A uint16_t
+#include "ord_std.h"
+#undef A
+#define A int_least16_t
+#include "ord_std.h"
+#undef A
+#define A uint_least16_t
+#include "ord_std.h"
+#undef A
+#define A int_fast16_t
+#include "ord_std.h"
+#undef A
+#define A uint_fast16_t
+#include "ord_std.h"
+#undef A
+#define A int32_t
+#include "ord_std.h"
+#undef A
+#define A uint32_t
+#include "ord_std.h"
+#undef A
+#define A int_least32_t
+#include "ord_std.h"
+#undef A
+#define A uint_least32_t
+#include "ord_std.h"
+#undef A
+#define A int_fast32_t
+#include "ord_std.h"
+#undef A
+#define A uint_fast32_t
+#include "ord_std.h"
+#undef A
+#define A int64_t
+#include "ord_std.h"
+#undef A
+#define A uint64_t
+#include "ord_std.h"
+#undef A
+#define A int_least64_t
+#include "ord_std.h"
+#undef A
+#define A uint_least64_t
+#include "ord_std.h"
+#undef A
+#define A int_fast64_t
+#include "ord_std.h"
+#undef A
+#define A uint_fast64_t
+#include "ord_std.h"
+#undef A
+#define A intptr_t
+#include "ord_std.h"
+#undef A
+#define A uintptr_t
+#include "ord_std.h"
+#undef A
+#define A intmax_t
+#include "ord_std.h"
+#undef A
+#define A uintmax_t
+#include "ord_std.h"
+#undef A
+#define A float
+#include "ord_std.h"
+#undef A
+
+#define A double
+#include "ord_std.h"
+#undef A
+
+#define A long_double
+#include "ord_std.h"
+#undef A
+
+#define A float_t
+#include "ord_std.h"
+#undef A
+
+#define A double_t
+#include "ord_std.h"
+#undef A
+
+#define A complex_float
+#include "ord_std.h"
+#undef A
+
+#define A complex_double
+#include "ord_std.h"
+#undef A
+
+#define A complex_long_double
+#include "ord_std.h"
+#undef A
+
+
+/// Automatically generated code ends.
+```

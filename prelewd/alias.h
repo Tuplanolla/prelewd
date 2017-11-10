@@ -12,7 +12,6 @@
 
 // typedef bool bool;
 // typedef char char;
-// typedef char char;
 typedef signed char signed_char;
 typedef unsigned char unsigned_char;
 typedef short int short_int;
