@@ -1,8 +1,17 @@
 # Prelewd for C11
 
-We ignore deprecations and annex K.
+## Storage Class Specifier
 
-## Types
+| C   | Header        | Type Qualifier
+|:----|:--------------|:---------------
+| C89 |               | `typedef`
+| C89 |               | `extern`
+| C89 |               | `static`
+| C89 |               | `auto`
+| C89 |               | `register`
+| C11 | `threads.h`   | `thread_local`
+
+## Type Qualifiers
 
 | C   | Header        | Type Qualifier
 |:----|:--------------|:---------------
@@ -11,9 +20,12 @@ We ignore deprecations and annex K.
 | C99 |               | `restrict`
 | C11 | `stdatomic.h` | `atomic`
 
+## Types
+
 | C   | Header        | Type                     | Signed Type              | Unsigned Type
 |:----|:--------------|:-------------------------|:-------------------------|:-------------------------
 | C99 | `stdbool.h`   | `bool`                   |                          |
+| C89 | `stdio.h`     | `FILE`                   |                          |
 | C89 |               |                          | `signed char`            | `unsigned char`
 | C89 |               |                          | `short int`              | `unsigned short int`
 | C89 |               |                          | `int`                    | `unsigned int`
@@ -53,6 +65,33 @@ We ignore deprecations and annex K.
 | C89 | `signal.h`    |                          | `sig_atomic_t`           | `sig_atomic_t`
 | C11 | `uchar.h`     |                          |                          | `char16_t`
 | C11 | `uchar.h`     |                          |                          | `char32_t`
+| C11 | `errno.h`     |                          | `errno_t`                |
+| C99 | `fenv.h`      | `fenv_t`                 |                          |
+| C99 | `fenv.h`      | `fexcept_t`              |                          |
+| C89 | `setjmp.h`    | `jmp_buf`                |                          |
+| C89 | `stdarg.h`    | `va_list`                |                          |
+| C11 | `stddef.h`    | `rsize_t`                |                          |
+| C89 | `stdio.h`     | `fpos_t`                 |                          |
+| C89 | `stdlib.h`    | `div_t`                  |                          |
+| C89 | `stdlib.h`    | `ldiv_t`                 |                          |
+| C99 | `stdlib.h`    | `lldiv_t`                |                          |
+| C99 | `inttypes.h`  | `imaxdiv_t`              |                          |
+| C89 | `time.h`      | `clock_t`                |                          |
+| C89 | `time.h`      | `time_t`                 |                          |
+| C89 | `time.h`      | `struct tm`              |                          |
+| C11 | `time.h`      | `struct timespec`        |                          |
+| C11 | `threads.h`   | `cnd_t`                  |                          |
+| C11 | `threads.h`   | `thrd_t`                 |                          |
+| C11 | `threads.h`   | `tss_t`                  |                          |
+| C11 | `threads.h`   | `mtx_t`                  |                          |
+| C11 | `threads.h`   | `tss_dtor_t`             |                          |
+| C11 | `threads.h`   | `thrd_start_t`           |                          |
+| C11 | `threads.h`   | `once_flag`              |                          |
+| C11 | `stdatomic.h` | `memory_order`           |                          |
+| C11 | `stdatomic.h` | `atomic_flag`            |                          |
+| C89 | `locale.h`    | `struct lconv`           |                          |
+
+## Numerical Limits
 
 | C   | Header        | Type                     | Minimum Value      | Maximum Value
 |:----|:--------------|:-------------------------|:-------------------|:-------------------
@@ -89,6 +128,7 @@ We ignore deprecations and annex K.
 | C99 | `stdint.h`    | `sig_atomic_t`           | `SIG_ATOMIC_MIN`   | `SIG_ATOMIC_MAX`
 | C95 | `wchar.h`     | `wchar_t`                | `WCHAR_MIN`        | `WCHAR_MAX`
 | C99 | `stdint.h`    | `wint_t`                 | `WINT_MIN`         | `WINT_MAX`
+| C11 | `errno.h`     | `errno_t`                | `INT_MIN`          | `INT_MAX`
 
 | C   | Header        | Type                     | Minimum Value      | Maximum Value
 |:----|:--------------|:-------------------------|:-------------------|:-------------------
@@ -125,6 +165,7 @@ We ignore deprecations and annex K.
 | C99 | `stdint.h`    | `sig_atomic_t`           | `0`                | `SIG_ATOMIC_MAX`
 | C11 | `stdint.h`    | `char16_t`               | `0`                | `UINT_LEAST16_MAX`
 | C11 | `stdint.h`    | `char32_t`               | `0`                | `UINT_LEAST32_MAX`
+| C11 | `stdint.h`    | `rsize_t`                | `0`                | `RSIZE_MAX`
 
 ## Naming Conventions
 
