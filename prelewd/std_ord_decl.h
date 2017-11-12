@@ -1,7 +1,6 @@
 #include <stdbool.h>
 
 #include "cpp.h"
-#include "cpp/decl.h"
 
 PRELEWD_INLINE(
 __attribute__ ((__const__, __pure__))

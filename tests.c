@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 #include "prelewd.h"
-#include "prelewd/lift.h"
 
 #define T int
 

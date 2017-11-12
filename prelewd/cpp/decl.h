@@ -1,9 +1,9 @@
 /// Preprocessor declaration generation (special header).
 ///
-/// This header requires defining
-/// either `PRELEWD_DECL_H` or `PRELEWD_DECL_C` before its inclusion.
-/// The former enables header file generation
-/// while the latter enables source file generation.
+/// This header does not do anything
+/// unless either the header file macro `PRELEWD_DECL_H` or
+/// the source file macro `PRELEWD_DECL_C` is defined before its inclusion.
+/// The definitions alter the behavior of the macros defined in this file.
 
 #ifdef PRELEWD_DECL_H
 
@@ -41,10 +41,6 @@
 
 /// Define a function.
 #define PRELEWD_FUNC(x, ...) x __VA_ARGS__
-
-#else
-
-#error "Missing declaration macro definitions"
 
 #endif
 #endif

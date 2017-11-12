@@ -37,7 +37,7 @@ shallow-clean:
 
 tests: CFLAGS+=$$(pkg-config --cflags cheat)
 tests: LDLIBS+=$$(pkg-config --libs cheat)
-tests: prelewd/lift.o
+tests: prelewd/std.o
 
 makefile.d:
 	-find -name '*.c' -print0 | xargs -0x $(CC) $(CFLAGS) -MM > $@
