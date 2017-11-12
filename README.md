@@ -267,6 +267,55 @@ The following [has been said][kopperman-1998].
 
 [kopperman-1998]: https://www.jstor.org/stable/2323060
 
+## Would Like to Do This
+
+    __attribute__ ((__nonnull__))
+    inline A $(add, A)(A const x, A const y) {
+      // ??
+    }
+
+    __attribute__ ((__nonnull__))
+    inline void $(add_mut, A)(A *const iox,
+        A const y) {
+      *iox = add(*iox, y);
+    }
+
+    __attribute__ ((__nonnull__))
+    inline void $(add_in, A)(A *const oz,
+        A const *const x, A const *const y) {
+      // ??
+    }
+
+    __attribute__ ((__nonnull__))
+    inline void $(add_in_mut, A)(A *const iox,
+        A const *const y) {
+      add(iox, iox, y);
+    }
+
+    __attribute__ ((__nonnull__))
+    inline void $(add_in_rest, A)(A *const oz,
+        A const *restrict const x, A const *restrict const y) {
+      // ??
+    }
+
+    __attribute__ ((__nonnull__))
+    inline void $(add_in_rest_mut, A)(A *const iox,
+        A const *restrict const y) {
+      add(iox, iox, y);
+    }
+
+    __attribute__ ((__nonnull__))
+    inline void $(add_in_unrest, A)(A *restrict const oz,
+        A const *restrict const x, A const *restrict const y) {
+      *oz = *x + *y;
+    }
+
+    __attribute__ ((__nonnull__))
+    inline void $(add_in_unrest_mut, A)(A *restrict const iox,
+        A const *restrict const y) {
+      // ??
+    }
+
 ## Operators
 
     () [] -> .                           left to right
@@ -918,173 +967,3 @@ The following [has been said][kopperman-1998].
       <threads.h>
       <stdnoreturn.h>
       <uchar.h>
-
-## Templates for Automatic Generation
-
-```
-/// Automatically generated code begins.
-
-
-#define A bool
-#include "ord_std.h"
-#undef A
-#define A char
-#include "ord_std.h"
-#undef A
-#define A signed_char
-#include "ord_std.h"
-#undef A
-#define A unsigned_char
-#include "ord_std.h"
-#undef A
-#define A short_int
-#include "ord_std.h"
-#undef A
-#define A unsigned_short_int
-#include "ord_std.h"
-#undef A
-#define A int
-#include "ord_std.h"
-#undef A
-#define A unsigned_int
-#include "ord_std.h"
-#undef A
-#define A long_int
-#include "ord_std.h"
-#undef A
-#define A unsigned_long_int
-#include "ord_std.h"
-#undef A
-#define A long_long_int
-#include "ord_std.h"
-#undef A
-#define A unsigned_long_long_int
-#include "ord_std.h"
-#undef A
-
-#define A size_t
-#include "ord_std.h"
-#undef A
-#define A ptrdiff_t
-#include "ord_std.h"
-#undef A
-
-#define A int8_t
-#include "ord_std.h"
-#undef A
-#define A uint8_t
-#include "ord_std.h"
-#undef A
-#define A int_least8_t
-#include "ord_std.h"
-#undef A
-#define A uint_least8_t
-#include "ord_std.h"
-#undef A
-#define A int_fast8_t
-#include "ord_std.h"
-#undef A
-#define A uint_fast8_t
-#include "ord_std.h"
-#undef A
-#define A int16_t
-#include "ord_std.h"
-#undef A
-#define A uint16_t
-#include "ord_std.h"
-#undef A
-#define A int_least16_t
-#include "ord_std.h"
-#undef A
-#define A uint_least16_t
-#include "ord_std.h"
-#undef A
-#define A int_fast16_t
-#include "ord_std.h"
-#undef A
-#define A uint_fast16_t
-#include "ord_std.h"
-#undef A
-#define A int32_t
-#include "ord_std.h"
-#undef A
-#define A uint32_t
-#include "ord_std.h"
-#undef A
-#define A int_least32_t
-#include "ord_std.h"
-#undef A
-#define A uint_least32_t
-#include "ord_std.h"
-#undef A
-#define A int_fast32_t
-#include "ord_std.h"
-#undef A
-#define A uint_fast32_t
-#include "ord_std.h"
-#undef A
-#define A int64_t
-#include "ord_std.h"
-#undef A
-#define A uint64_t
-#include "ord_std.h"
-#undef A
-#define A int_least64_t
-#include "ord_std.h"
-#undef A
-#define A uint_least64_t
-#include "ord_std.h"
-#undef A
-#define A int_fast64_t
-#include "ord_std.h"
-#undef A
-#define A uint_fast64_t
-#include "ord_std.h"
-#undef A
-#define A intptr_t
-#include "ord_std.h"
-#undef A
-#define A uintptr_t
-#include "ord_std.h"
-#undef A
-#define A intmax_t
-#include "ord_std.h"
-#undef A
-#define A uintmax_t
-#include "ord_std.h"
-#undef A
-#define A float
-#include "ord_std.h"
-#undef A
-
-#define A double
-#include "ord_std.h"
-#undef A
-
-#define A long_double
-#include "ord_std.h"
-#undef A
-
-#define A float_t
-#include "ord_std.h"
-#undef A
-
-#define A double_t
-#include "ord_std.h"
-#undef A
-
-#define A complex_float
-#include "ord_std.h"
-#undef A
-
-#define A complex_double
-#include "ord_std.h"
-#undef A
-
-#define A complex_long_double
-#include "ord_std.h"
-#undef A
-
-
-/// Automatically generated code ends.
-```

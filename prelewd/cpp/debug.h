@@ -6,7 +6,7 @@
 #ifdef DEBUG
 
 #ifdef NDEBUG
-#error "Contradictory macro definitions"
+#error "Contradictory debug macro definitions"
 #endif
 
 #else
