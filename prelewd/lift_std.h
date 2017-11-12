@@ -4,36 +4,6 @@
 #include "gnu.h"
 
 __attribute__ ((__const__, __pure__))
-inline bool $(eq, A)(A const x, A const y) {
-  return x == y;
-}
-
-__attribute__ ((__const__, __pure__))
-inline bool $(neq, A)(A const x, A const y) {
-  return x != y;
-}
-
-__attribute__ ((__const__, __pure__))
-inline bool $(le, A)(A const x, A const y) {
-  return x <= y;
-}
-
-__attribute__ ((__const__, __pure__))
-inline bool $(lt, A)(A const x, A const y) {
-  return x < y;
-}
-
-__attribute__ ((__const__, __pure__))
-inline bool $(ge, A)(A const x, A const y) {
-  return x >= y;
-}
-
-__attribute__ ((__const__, __pure__))
-inline bool $(gt, A)(A const x, A const y) {
-  return x > y;
-}
-
-__attribute__ ((__const__, __pure__))
 inline A $(0, A)(void) {
   return 0;
 }
