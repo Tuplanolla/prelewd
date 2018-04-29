@@ -11,36 +11,36 @@
 #error "Contradictory declaration macro definitions"
 #endif
 
-#ifdef PRELEWD_INLINE
-#undef PRELEWD_INLINE
+#ifdef PRELEWD_INPROC
+#undef PRELEWD_INPROC
 #endif
 
-/// Declare an inline function.
-#define PRELEWD_INLINE(x, ...) inline x __VA_ARGS__
+/// Declare an inline procedure.
+#define PRELEWD_INPROC(x, ...) inline x __VA_ARGS__
 
-#ifdef PRELEWD_FUNC
-#undef PRELEWD_FUNC
+#ifdef PRELEWD_PROC
+#undef PRELEWD_PROC
 #endif
 
-/// Declare a function.
-#define PRELEWD_FUNC(x, ...) x;
+/// Declare a procedure.
+#define PRELEWD_PROC(x, ...) x;
 
 #else
 #ifdef PRELEWD_DECL_C
 
-#ifdef PRELEWD_INLINE
-#undef PRELEWD_INLINE
+#ifdef PRELEWD_INPROC
+#undef PRELEWD_INPROC
 #endif
 
-/// Define an inline function.
-#define PRELEWD_INLINE(x, ...) extern inline x;
+/// Define an inline procedure.
+#define PRELEWD_INPROC(x, ...) extern inline x;
 
-#ifdef PRELEWD_FUNC
-#undef PRELEWD_FUNC
+#ifdef PRELEWD_PROC
+#undef PRELEWD_PROC
 #endif
 
-/// Define a function.
-#define PRELEWD_FUNC(x, ...) x __VA_ARGS__
+/// Define a procedure.
+#define PRELEWD_PROC(x, ...) x __VA_ARGS__
 
 #endif
 #endif
