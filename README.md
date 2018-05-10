@@ -281,37 +281,37 @@ The following [has been said][kopperman-1998].
     }
 
     __attribute__ ((__nonnull__))
-    inline void $(add_in, A)(A *const oz,
+    inline void $(add_ref, A)(A *const oz,
         A const *const x, A const *const y) {
       // ??
     }
 
     __attribute__ ((__nonnull__))
-    inline void $(add_in_mut, A)(A *const iox,
+    inline void $(add_ref_mut, A)(A *const iox,
         A const *const y) {
       add(iox, iox, y);
     }
 
     __attribute__ ((__nonnull__))
-    inline void $(add_in_rest, A)(A *const oz,
+    inline void $(add_ref_rest, A)(A *const oz,
         A const *restrict const x, A const *restrict const y) {
       // ??
     }
 
     __attribute__ ((__nonnull__))
-    inline void $(add_in_rest_mut, A)(A *const iox,
+    inline void $(add_ref_rest_mut, A)(A *const iox,
         A const *restrict const y) {
       add(iox, iox, y);
     }
 
     __attribute__ ((__nonnull__))
-    inline void $(add_in_unrest, A)(A *restrict const oz,
+    inline void $(add_ref_unrest, A)(A *restrict const oz,
         A const *restrict const x, A const *restrict const y) {
       *oz = *x + *y;
     }
 
     __attribute__ ((__nonnull__))
-    inline void $(add_in_unrest_mut, A)(A *restrict const iox,
+    inline void $(add_ref_unrest_mut, A)(A *restrict const iox,
         A const *restrict const y) {
       // ??
     }

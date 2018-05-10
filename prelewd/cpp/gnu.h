@@ -7,10 +7,12 @@
 
 #ifndef __attribute__
 
-/// Avoid compatibility errors.
+/// Ignore attributes.
 ///
-/// The keyword `__attribute__` does nothing
-/// unless GNU extensions are supported.
+/// If the GNU extension keyword `__attribute__` is missing,
+/// this definition makes it disappear
+/// instead of producing an error during compilation.
+/// Doing so is reasonable as long as only optional extensions are ever used.
 #define __attribute__(x)
 
 #endif
