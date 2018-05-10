@@ -306,8 +306,5 @@
 #define Any memory_order
 #include "std_any_decl.h"
 #undef Any
-#define Any atomic_flag
-#include "std_any_decl.h"
-#undef Any
 
 #endif
