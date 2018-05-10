@@ -5,11 +5,7 @@
 
 #include "alias.h"
 
-// ??
-#define A bool
-#include "ord_mono.h"
-#undef A
-
+// TODO This.
 #define A bool
 #include "ord_any.h"
 #undef A

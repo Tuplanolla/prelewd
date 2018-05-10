@@ -1,3 +1,5 @@
+// TODO This is bad.
+
 #include <stdbool.h>
 
 #include "cpp.h"
@@ -15,48 +17,48 @@ inline A $(1, A)(void) {
 // Danger zone.
 
 __attribute__ ((__const__, __pure__))
-inline A $(add_unsafe, A)(A const x, A const y) {
+inline A $(add_uns, A)(A const x, A const y) {
   return x + y;
 }
 
 __attribute__ ((__const__, __pure__))
-inline A $(neg_unsafe, A)(A const x) {
+inline A $(neg_uns, A)(A const x) {
   return -x;
 }
 
 __attribute__ ((__const__, __pure__))
-inline A $(sub_unsafe, A)(A const x, A const y) {
+inline A $(sub_uns, A)(A const x, A const y) {
   return x - y;
 }
 
 __attribute__ ((__const__, __pure__))
-inline A $(mul_unsafe, A)(A const x, A const y) {
+inline A $(mul_uns, A)(A const x, A const y) {
   return x * y;
 }
 
 __attribute__ ((__const__, __pure__))
-inline A $(recip_unsafe, A)(A const x) {
+inline A $(recip_uns, A)(A const x) {
   return 1 / x;
 }
 
 __attribute__ ((__const__, __pure__))
-inline A $(div_unsafe, A)(A const x, A const y) {
+inline A $(div_uns, A)(A const x, A const y) {
   return x / y;
 }
 
 __attribute__ ((__const__, __pure__))
-inline A $(quot_unsafe, A)(A const x, A const y) {
+inline A $(quot_uns, A)(A const x, A const y) {
   return x / y;
 }
 
 __attribute__ ((__const__, __pure__))
-inline A $(rem_unsafe, A)(A const x, A const y) {
+inline A $(rem_uns, A)(A const x, A const y) {
   return x % y;
 }
 
 /*
 __attribute__ ((__const__, __pure__))
-inline B $(cast_unsafe, A, B)(A const x) {
+inline B $(cast_uns, A, B)(A const x) {
   return (B) x;
 }
 */

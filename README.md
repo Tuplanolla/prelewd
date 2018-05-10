@@ -1,5 +1,48 @@
 # Prelewd for C11
 
+## How to Use
+
+Let us define a compilation unit called `x` with fully polymorphic components.
+First we generate the source file `x.c` as follows.
+
+    #include "x.h"
+
+    #define PRELEWD_DECL_C
+    #include "x_any.h"
+    #undef PRELEWD_DECL_C
+
+    #endif
+
+Then we generate the header file `x.h` as follows.
+
+    #ifndef PRELEWD_X_H
+    #define PRELEWD_X_H
+
+    #define PRELEWD_DECL_H
+    #include "x_any.h"
+    #undef PRELEWD_DECL_H
+
+Now we can enumerate all the default specializations in `x_any.h`.
+
+    #include <prelewd/alias.h>
+
+    #define Any signed_char
+    #include "x_any_decl.h"
+    #undef Any
+    #define Any unsigned_char
+    #include "x_any_decl.h"
+    #undef Any
+
+The declarations themselves go into `x_any_decl.h`.
+Note the commas before the blocks.
+
+    #include <prelewd/cpp.h>
+
+    PRELEWD_INPROC(__attribute__ ((__nonnull__))
+    void $(x_mut, Any)(Any *restrict const oy, Any const *restrict const x), {
+      *oy = *x;
+    })
+
 ## Naming Conventions
 
 All names consist of tokens that are eight or fewer characters long.
@@ -252,21 +295,6 @@ The other cases are, again, tricky.
     /// The call `conj_mut(iox)`
     /// stores into `iox` the conjugate of `iox`.
 
-# Notes
-
-The following [has been said][kopperman-1998].
-
-> 1. *Definition.* A *value semigroup* is an additive abelian semigroup $A$
-> with identity $0$ and absorbing element $\infty \ne 0$, satisfying:
-> (vl) if $a + x = b$ and $b + y = a$ then $a = b$,
-> (thus $a < b$ iff $b = a + x$ for some $x$, defines a partial order),
-> (v2) for each $a$ there is a unique $b$ (called $(1/2) a$ or $a/2$)
-> such that $b + b = a$,
-> (v3) for each $a$, $b$ there is an inf, $a \wedge b$,
-> (v4) $a \wedge b + c = (a + c) \wedge (b + c)$.
-
-[kopperman-1998]: https://www.jstor.org/stable/2323060
-
 ## Would Like to Do This
 
     __attribute__ ((__nonnull__))
@@ -318,21 +346,47 @@ The following [has been said][kopperman-1998].
 
 ## Operators
 
-    () [] -> .                           left to right
-    ! ~ ++ -- + - (type) * & sizeof      right to left
-    * / %                                left to right
-    + -                                  left to right
-    << >>                                left to right
-    < <= > >=                            left to right
-    == !=                                left to right
-    &                                    left to right
-    ^                                    left to right
-    |                                    left to right
-    &&                                   left to right
-    ||                                   left to right
-    ?:                                   right to left
-    = += -= *= /= %= <<= >>= &= ^= |=    right to left
-    ,                                    left to right
+    =                                    any
+    == !=                                eq
+    < <= > >=                            ord
+    ++ + +=                              smon
+    -- - -=                              sgrp
+    * *=                                 pmon
+    / /=                                 pgrp
+    % %=                                 edom
+    ~ << >> & ^ | <<= >>= &= ^= |=       bits
+    ! && ||                              bool
+    ?:                                   bool * any
+    .                                    one
+
+# Notes
+
+Note that the remainder is tricky here.
+
+> Furthermore, for any Euclidean domain $R$, division with remainder can be
+> defined as follows: $a=tb+r$, and either $r=0$ or $f(r)<f(b)$, where $f$ is
+> the euclidean function of $R$. [The set of integers] $Z$ fits into this
+> classification by letting $f(n)=|n|$.
+> --- Benjamin Braun
+
+> In [M. A. Jodeit, Jr., Uniqueness in the division algorithm, The American
+> Mathematical Monthly 74 (1967), 835--836] it is shown that a Euclidean Domain
+> in which quotient and remainder are strictly unique (for the integers there
+> is a choice of sign) is either a field or a polynomial ring over a field.
+> --- Francis Clarke
+
+The following [has been said][kopperman-1998].
+
+> 1. *Definition.* A *value semigroup* is an additive abelian semigroup $A$
+> with identity $0$ and absorbing element $\infty \ne 0$, satisfying:
+> (vl) if $a + x = b$ and $b + y = a$ then $a = b$,
+> (thus $a < b$ iff $b = a + x$ for some $x$, defines a partial order),
+> (v2) for each $a$ there is a unique $b$ (called $(1/2) a$ or $a/2$)
+> such that $b + b = a$,
+> (v3) for each $a$, $b$ there is an inf, $a \wedge b$,
+> (v4) $a \wedge b + c = (a + c) \wedge (b + c)$.
+
+[kopperman-1998]: https://www.jstor.org/stable/2323060
 
 ## Keywords
 
