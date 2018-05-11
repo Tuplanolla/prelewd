@@ -11,9 +11,9 @@
 
 #include "gnu.h"
 
-#define PRELEWD_STATIC_ASSERT(x, y) \
+#define PRELEWD_STATIC_ASSERT(x, n) \
   __attribute__ ((__unused__)) \
-  static int const prelewd_static_assert_##y[(x) ? 1 : -1]
+  static int const PRELEWD_INDEX(prelewd_static_assert, n)[(x) ? 1 : -1]
 
 #ifdef __COUNTER__
 

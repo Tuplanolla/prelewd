@@ -10,13 +10,13 @@
 /// Invoke a macro from an indexed family of macros.
 ///
 /// The macro invocation `PRELEWD_EVAL(f, x0, x1, x2, x3)` expands
-/// to `f_4(x0, x1, x2, x3)` in this case of four arguments
+/// to `f__4(x0, x1, x2, x3)` in this case of four arguments
 /// (with `PRELEWD_APPLY` sprinkled in appropriately).
-/// This is useful when the definition of the macro
+/// This is useful when the definition of a macro
 /// depends on the number of arguments: given
 ///
-///     #define F_1(x0) (x0)
-///     #define F_2(x0, x1) (x1 - x0)
+///     #define F__1(x0) (x0)
+///     #define F__2(x0, x1) (x1 - x0)
 ///     #define X0 42
 ///     #define X1 13
 ///

@@ -10,11 +10,11 @@
 /// This is useful when the arguments need to be expanded
 /// before being passed on to the macro: given
 ///
-///     #define F(x) F_##x
+///     #define F(x) F__##x
 ///     #define X 42
 ///
-/// for example, `F(X)` expands to `F_X`
-/// while `PRELEWD_APPLY(F, X)` expands to `F_42`.
+/// for example, `F(X)` expands to `F__X`
+/// while `PRELEWD_APPLY(F, X)` expands to `F__42`.
 #define PRELEWD_APPLY(f, ...) f(__VA_ARGS__)
 
 #endif

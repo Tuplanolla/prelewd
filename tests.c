@@ -32,7 +32,7 @@ cheat_assert($(min, int)($(42, int)(), $(13, int)()) == 13);
 
 CHEAT_TEST(poly,
 
-cheat_assert($(copy, int)($(42, int)()) == 42);
+cheat_assert($(id, int)($(42, int)()) == 42);
 
 )
 
