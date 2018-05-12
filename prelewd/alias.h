@@ -27,11 +27,11 @@ typedef complex long double complex_long_double;
 
 #include <time.h>
 
-typedef struct tm struct_tm;
-typedef struct timespec struct_timespec;
+typedef struct tm tm;
+typedef struct timespec timespec;
 
 #include <locale.h>
 
-typedef struct lconv struct_lconv;
+typedef struct lconv lconv;
 
 #endif

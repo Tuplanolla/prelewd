@@ -179,10 +179,10 @@
 #include "std_any_decl.h"
 #undef Any
 
-#include <errno.h>
-
 #ifdef __STDC_LIB_EXT1__
 #ifdef __STDC_WANT_LIB_EXT1__
+
+#include <errno.h>
 
 #define Any errno_t
 #include "std_any_decl.h"
@@ -243,16 +243,16 @@
 #define Any time_t
 #include "std_any_decl.h"
 #undef Any
-#define Any struct_tm
+#define Any tm
 #include "std_any_decl.h"
 #undef Any
-#define Any struct_timespec
+#define Any timespec
 #include "std_any_decl.h"
 #undef Any
 
 #include <locale.h>
 
-#define Any struct_lconv
+#define Any lconv
 #include "std_any_decl.h"
 #undef Any
 

@@ -179,10 +179,10 @@
 #include "x_any_decl.h"
 #undef Any
 
-#include <errno.h>
-
 #ifdef __STDC_LIB_EXT1__
 #ifdef __STDC_WANT_LIB_EXT1__
+
+#include <errno.h>
 
 #define Any errno_t
 #include "x_any_decl.h"
