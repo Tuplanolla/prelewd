@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "prelewd.h"
+#include "prelewd/list.h"
 
 #define T int
 
@@ -33,6 +34,16 @@ cheat_assert($(min, int)($(42, int)(), $(13, int)()) == 13);
 CHEAT_TEST(poly,
 
 cheat_assert($(id, int)($(42, int)()) == 42);
+
+)
+
+CHEAT_TEST(list,
+
+struct $(list, int) list;
+$(list_init, int)(&list);
+$(list_cons, int)(&list, 42);
+$(list_cons, int)(&list, 13);
+$(list_fini, int)(&list);
 
 )
 

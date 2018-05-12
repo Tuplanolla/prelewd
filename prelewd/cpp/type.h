@@ -5,4 +5,4 @@
 #include "type/index.h"
 #include "type/length.h"
 #include "type/seq.h"
-#include "type/type.h"
+#include "type/spec.h"

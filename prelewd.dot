@@ -1,7 +1,7 @@
 digraph {
   node [style = solid]
 
-  PRELEWD_TYPE [label = "\N\ntype.h"]
+  PRELEWD_SPEC [label = "\N\nspec.h"]
   PRELEWD_FOLDL [label = "\N\nfold.h"]
   PRELEWD_FOLDR [label = "\N\nfold.h"]
   PRELEWD_EVAL [label = "\N\neval.h"]
@@ -20,8 +20,8 @@ digraph {
   PRELEWD_SEQL_64 [label = "\N\nseql.out.h"]
   PRELEWD_SEQR_64 [label = "\N\nseqr.out.h"]
 
-  PRELEWD_TYPE -> PRELEWD_FOLDR
-  PRELEWD_TYPE -> PRELEWD_INDEX
+  PRELEWD_SPEC -> PRELEWD_FOLDR
+  PRELEWD_SPEC -> PRELEWD_INDEX
 
   PRELEWD_FOLDL -> PRELEWD_EVAL
   PRELEWD_FOLDL -> PRELEWD_FOLDL_64

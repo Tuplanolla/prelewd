@@ -11,8 +11,6 @@ First we generate the source file `x.c` as follows.
     #include "x_any.h"
     #undef PRELEWD_DECL_C
 
-    #endif
-
 Then we generate the header file `x.h` as follows.
 
     #ifndef PRELEWD_X_H
@@ -21,6 +19,8 @@ Then we generate the header file `x.h` as follows.
     #define PRELEWD_DECL_H
     #include "x_any.h"
     #undef PRELEWD_DECL_H
+
+    #endif
 
 Now we can enumerate all the default specializations in `x_any.h`.
 
