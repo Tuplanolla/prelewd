@@ -30,14 +30,14 @@
 #endif
 
 /// Declare a private type (structure or enumeration).
-#define PRELEWD_TYPE(x, ...) x;
+#define PRELEWD_TYPE(t, x, ...) typedef t x x; t x;
 
 #ifdef PRELEWD_INTYPE
 #undef PRELEWD_INTYPE
 #endif
 
 /// Declare a public type (structure or enumeration).
-#define PRELEWD_INTYPE(x, ...) x __VA_ARGS__;
+#define PRELEWD_INTYPE(t, x, ...) typedef t x x; t x __VA_ARGS__;
 
 #else
 #ifdef PRELEWD_DECL_C
@@ -61,7 +61,7 @@
 #endif
 
 /// Define a private type (structure or enumeration).
-#define PRELEWD_TYPE(x, ...) x __VA_ARGS__;
+#define PRELEWD_TYPE(t, x, ...) t x __VA_ARGS__;
 
 #ifdef PRELEWD_INTYPE
 #undef PRELEWD_INTYPE

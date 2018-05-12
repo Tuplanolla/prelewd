@@ -2,19 +2,15 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-typedef enum list_type list_type;
-
-PRELEWD_INTYPE(
-enum list_type, {
+PRELEWD_TYPE(
+enum, list_type, {
   LIST_TYPE_NIL,
   LIST_TYPE_CONS,
   LIST_NTYPE
 })
 
-typedef struct $(list, Any) $(list, Any);
-
-PRELEWD_INTYPE(
-struct $(list, Any), {
+PRELEWD_TYPE(
+struct, $(list, Any), {
   enum list_type type;
   union {
     // struct {} nil;
@@ -25,12 +21,12 @@ struct $(list, Any), {
   } rep;
 })
 
-PRELEWD_INPROC(__attribute__ ((__nonnull__))
+PRELEWD_PROC(__attribute__ ((__nonnull__))
 void $(list_init, Any)($(list, Any) *const list), {
   list->type = LIST_TYPE_NIL;
 })
 
-PRELEWD_INPROC(__attribute__ ((__nonnull__))
+PRELEWD_PROC(__attribute__ ((__nonnull__))
 void $(list_fini, Any)($(list, Any) *const list), {
   switch (list->type) {
   case LIST_TYPE_NIL:
@@ -58,7 +54,7 @@ work:
   }
 })
 
-PRELEWD_INPROC(__attribute__ ((__nonnull__))
+PRELEWD_PROC(__attribute__ ((__nonnull__))
 bool $(list_cons, Any)($(list, Any) *const list, Any const head), {
   $(list, Any) *const tmp = malloc(sizeof *tmp);
   if (tmp == NULL)
