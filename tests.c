@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "ga.h"
+
 #include "prelewd.h"
 #include "prelewd/list.h"
 
