@@ -3,15 +3,8 @@
 #include <stdlib.h>
 
 PRELEWD_INTYPE(
-enum, list_type, {
-  LIST_TYPE_NIL,
-  LIST_TYPE_CONS,
-  LIST_NTYPE
-})
-
-PRELEWD_INTYPE(
 struct, $(list, Any), {
-  enum list_type type;
+  list_type type;
   union {
     // struct {} nil;
     struct {
