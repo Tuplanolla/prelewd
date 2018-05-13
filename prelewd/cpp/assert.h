@@ -53,7 +53,7 @@
 /// The macro invocation `dynamic_assert(x, s)`
 /// is equivalent to `assert(x)` with the message `s`.
 /// It exists for the sake of consistency with `static_assert`.
-#define dynamic_assert(x, s) assert(((void) s, x))
+#define dynamic_assert(x, s) assert(((void) (s), x))
 
 #endif
 

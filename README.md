@@ -388,6 +388,19 @@ The following [has been said][kopperman-1998].
 
 [kopperman-1998]: https://www.jstor.org/stable/2323060
 
+The geometric algebra thing could work
+if the data types carried occupancy masks by grade instead of by basis element.
+For dimension $d$, the number of basis elements is $2^d$ and
+the number of grades is $d$.
+The respective occupancy masks have as many bits,
+so they have either $2^{2^d}$ or $2^d$ inhabitants.
+Dispatching by the masks takes either $(2^{2^d})^2$ or $(2^d)^2$ branches.
+With symmetry reduction taken into account,
+the result becomes either $(2^{2^d})^2 / 2$ or $(2^d)^2 / 2$ branches.
+These grow to $128$ branches by $2$ and $4$ dimensions respectively and
+to $32768$ by $3$ and $8$ and become intractable beyond that.
+Still, eight dimensions ought to be enough for anybody!
+
 ## Keywords
 
     C89
