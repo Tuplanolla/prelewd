@@ -2,6 +2,24 @@ Require Import ZArith.
 
 Open Scope Z_scope.
 
+Inductive dtree (A : Type) : nat -> Type :=
+  | dleaf : A -> dtree A O
+  | dbranch : forall n, dtree A n -> dtree A n -> dtree A (S n).
+
+Arguments dleaf {A} x.
+Arguments dbranch {A} {n} l r.
+
+Check dbranch (dbranch (dleaf 42) (dleaf 13)) (dbranch (dleaf 7) (dleaf 20)).
+
+Inductive stree (A : Type) : nat -> Type :=
+  | sleaf : A -> stree A O
+  | sbranch : forall n m, stree A n -> stree A m -> stree A (S (max n m)).
+
+Arguments sleaf {A} x.
+Arguments sbranch {A} {n m} l r.
+
+Check sbranch (sbranch (sleaf 42) (sleaf 13)) (sleaf 7).
+
 (** This is a balanced binary tree with elements only in the leaves. *)
 Inductive tree (A : Type) : nat -> Type :=
   | leaf : A -> tree A O
@@ -99,7 +117,7 @@ Fixpoint inner {A : Type} (fadd fmul : A -> A -> A) (fneg : A -> A)
     (* metric signature here *) (inner fadd fmul fneg r1 (aux fneg (br t2)))
   end t2.
 
-Notation "x ** y" := (inner Zplus Zmult Zopp x y) (at level 42).
+Notation "x '.*' y" := (inner Zplus Zmult Zopp x y) (at level 42).
 
 Compute inner Zplus Zmult Zopp
   (branch (branch (leaf 42) (leaf 13)) (branch (leaf 7) (leaf 69)))
@@ -184,6 +202,10 @@ Arguments f_neg {A} {z} x.
 Arguments f_mul {A} {z} x y.
 
 Check (@f_lift Z 0 42).
+
+Notation "x + y" := (f_add x y).
+Notation "- x" := (f_neg x).
+Notation "x * y" := (f_mul x y).
 
 Require Import String.
 
